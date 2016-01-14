@@ -1,6 +1,6 @@
-/*prototype(start)*/
-.prototype{
-	width: 1280px;
-	margin: 0 auto;
+@CHARSET "UTF-8";
+
+body{
+	font-size: 100%;
+	background: rgb(255, 255, 255);
 }
-/*prototype(end)*/
