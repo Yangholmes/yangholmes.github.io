@@ -1,6 +1,50 @@
 @CHARSET "UTF-8";
 
+/*清除默认样式*/
+ul,li,p,h1{
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+/*清除默认样式*/
+
 body{
 	font-size: 100%;
+	color: rgb(60, 60, 60);
+	margin: 0;
+	padding: 0;
 	background: rgb(255, 255, 255);
+}
+
+header, footer{
+	background: rgb(240, 240, 240);
+}
+
+header{
+	height: 80px;
+	width: auto;
+	font-size: 1.125em;
+}
+
+.head-content{
+	width: 960px;
+	margin: 0 auto;
+}
+
+.head-content ul{
+	height: 80px;
+	line-height: 80px;
+}
+
+nav{
+	float: left;
+}
+
+.socialSite{
+	float: right;
+}
+
+.head-content li{
+	display: inline;
+	margin-right: 
 }
