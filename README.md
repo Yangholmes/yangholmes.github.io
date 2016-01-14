@@ -1,0 +1,1 @@
+#Yangholmes' Resume##log*  **2016/01/12** 在GitHub上建库，初始化index.html。* **2016/01/13** 搭好HTML整体架构。
