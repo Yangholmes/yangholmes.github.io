@@ -52,6 +52,7 @@ header{
 .head-content ul{
 	height: 80px;
 	line-height: 80px;
+	overflow: hidden;
 }
 
 nav{
@@ -71,11 +72,31 @@ nav li{
 	display: inline;
 }
 
-.gllery{
+.gallery{
 	width: auto;
 	height: 300px;
 	background: url(../img/gallery-background.png); 
 	background-size: cover;
+}
+
+.gallery .picsName{
+	width: 640px;
+	margin: 0 auto;
+	padding: 75px 0;
+}
+
+.gallery .pics{
+	width: 150px; height: 150px;
+	border-radius: 50%;
+	background: url(../img/yangholmes.png);
+	background-position: center;
+	background-size: 150px 150px;
+	background-repeat: no-repeat;
+	float: left;
+}
+
+.gallery .myName{
+	float: right;
 }
 
 main{
