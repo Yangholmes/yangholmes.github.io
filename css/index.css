@@ -1,12 +1,19 @@
 @CHARSET "UTF-8";
 
-/*清除默认样式*/
+/*清除默认样式(start)*/
 ul,li,p,h1{
 	display: block;
 	margin: 0;
 	padding: 0;
 }
-/*清除默认样式*/
+/*清除默认样式(end)*/
+
+/*导入字体(start)*/
+@font-face{
+	font-family: raleway;
+	src: url('C:\Users\Yangholmes\work\Resume\yangholmes\fonts\raleway\Raleway-Regular.ttf.ttf'),
+}
+/*导入字体(end)*/
 
 body{
 	font-size: 100%;
@@ -15,6 +22,12 @@ body{
 	padding: 0;
 	background: rgb(255, 255, 255);
 }
+
+a{text-decoration:none; }
+a:link{color:rgb(60, 60, 60); }
+a:visited{color:rgb(60, 60, 60); }
+a:hover{color:rgb(0, 0, 0); }
+a:active{color:rgb(60, 60, 60); }
 
 header, footer{
 	background: rgb(240, 240, 240);
@@ -38,13 +51,17 @@ header{
 
 nav{
 	float: left;
+	font-family: raleway;
 }
 
 .socialSite{
 	float: right;
 }
 
+nav li{
+	margin-right: 2.5em;
+}
+
 .head-content li{
 	display: inline;
-	margin-right: 
 }
