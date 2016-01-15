@@ -11,8 +11,13 @@ ul,li,p,h1{
 /*导入字体(start)*/
 @font-face{
 	font-family: raleway;
-	src: url('C:\Users\Yangholmes\work\Resume\yangholmes\fonts\raleway\Raleway-Regular.ttf.ttf'),
+	src: url('\fonts\raleway\Raleway-Regular.ttf'),
 }
+@font-face{
+	font-family: raleway;
+	src: url('\fonts\raleway\Raleway-SemiBold.ttf'),
+	font-weight: SemiBold;
+	}
 /*导入字体(end)*/
 
 body{
@@ -51,17 +56,39 @@ header{
 
 nav{
 	float: left;
-	font-family: raleway;
-}
-
-.socialSite{
-	float: right;
+	font-family: 'raleway', sans-serif;
 }
 
 nav li{
 	margin-right: 2.5em;
 }
 
+.socialSite{
+	float: right;
+}
+
 .head-content li{
 	display: inline;
+}
+
+.gllery{
+	width: auto;
+	height: 300px;
+	background: url(../img/gallery-background.png); 
+	background-size: cover;
+}
+
+main{
+	width: 960px;
+	margin: 0 auto;
+	font-family: 'raleway', sans-serif;
+}
+main article{
+	margin-top: 5em;
+}
+
+main h1{
+	font-size: 2.5em;
+	font-weight: SemiBold;
+	margin-bottom: 2.5rem;/*rem是依body的字体进行缩放*/
 }
