@@ -12,13 +12,19 @@ ul,li,p,h1{
 @font-face{
 	font-family: raleway;
 	src: url('../fonts/raleway/Raleway-Regular.ttf');
-	font-weight: normal;
+	font-weight: 400;
 	font-style: normal;
 }
 @font-face{
-	font-family: 'ralewaySemiBold';
+	font-family: 'raleway';
 	src: url('../fonts/raleway/Raleway-SemiBold.ttf');
-	font-weight: normal;
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face{
+	font-family: 'raleway';
+	src: url('../fonts/raleway/Raleway-Medium.ttf');
+	font-weight: 500;
 	font-style: normal;
 }
 /*导入字体(end)*/
@@ -61,17 +67,19 @@ header{
 nav{
 	float: left;
 	font-family: 'raleway', sans-serif;
+	font-weight: 400;
 }
 
 nav li{
 	margin-right: 2.5em;
 }
 
-.socialSite{
+header .socialSite{
 	float: right;
 }
 
-.head-content li{
+.head-content li,
+footer li{
 	display: inline;
 }
 
@@ -106,13 +114,56 @@ main{
 	width: 960px;
 	margin: 0 auto;
 	font-family: 'raleway', sans-serif;
+	font-weight: 400;
+	font-size: 1.25em;
+	line-height: 1.875em;
 }
 main article{
 	margin-top: 5em;
 }
 
+main article:last-child{
+	margin-bottom: 5em;
+}
+
 main h1{
 	font-size: 2.5em;
-	font-family: 'ralewaySemiBold', sans-serif;
+	font-weight: 600;
 	margin-bottom: 2.5rem;/*rem是依body的字体进行缩放*/
+}
+
+main .tip{
+	font-weight: 500;
+	font-size: 1.25em;
+}
+
+main .point{
+	font-weight:600;
+	font-size: 1.5625em;
+	line-height: 2.34375em;
+}
+
+footer{
+	height: 260px; 
+}
+
+footer .Myname{
+	width: 288px;
+	margin: 0 auto;
+	padding: 69.5px 0;
+}
+
+footer img{
+	margin-bottom: 40px;
+}
+
+footer .socialSite{
+	font-size: 1.5625em;
+	width: 288px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+footer .socialSite a{
+	padding: 0 20px;
 }
