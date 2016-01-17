@@ -84,6 +84,11 @@ footer li{
 	display: inline;
 }
 
+.resume-main{
+	width: auto;
+	min-width: 1280px;
+}
+
 .gallery{
 	width: auto;
 	min-width: 1280px;
