@@ -176,3 +176,20 @@ footer .socialSite{
 footer .socialSite a{
 	padding: 0 20px;
 }
+
+/* 响应式 */
+@media only screen and (min-width: 1280px){}
+
+@media only screen and (min-width: 320px){
+	header, footer, .resume-main, .gallery{
+		min-width: 1280px;
+	}
+	header{
+		position: fixed;
+		left: 0; bottom: 0;
+		
+	}
+	footer{
+		display: none;
+	}
+}
