@@ -55,6 +55,12 @@ main{
 	font-weight: 400;
 }
 
+.myName img{
+	background: rgb(60, 60, 60);
+	width: 100%;
+	height: 100%;
+}
+
 main h1{
 	font-weight: 600;
 }
@@ -104,6 +110,11 @@ main .point{
 		content: "ex";
 		font-style: normal;
 		font-weight: 600;
+	}
+	.myName img{
+		background: rgba(0, 0, 0, 0);
+		width: auto;
+		height: auto;
 	}
 }
 @media only screen and (min-width: 768px){}
