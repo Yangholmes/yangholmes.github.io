@@ -193,8 +193,7 @@ main .point{
 		line-height: 2.34375em;
 	}
 }
-@media only screen and (min-width: 768px){}
-@media only screen and (min-width: 1280px){
+@media only screen and (min-width: 960px){
 	header, footer{
 		background: rgb(240, 240, 240);
 		display: block;
