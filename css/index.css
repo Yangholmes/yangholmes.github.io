@@ -266,6 +266,22 @@ main .point{
 	footer{
 		height: 260px; 
 	}
+	footer .Myname{
+		width: 288px;
+		margin: 0 auto;
+		padding: 69.5px 0;
+	}
+
+	footer img{
+		margin-bottom: 40px;
+	}
+
+	footer .socialSite{
+		font-size: 1.5625em;
+		width: 288px;
+		margin: 0 auto;
+		text-align: center;
+	}
 	footer .socialSite{
 		font-size: 1.5625em;
 		width: 288px;
