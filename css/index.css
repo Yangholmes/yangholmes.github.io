@@ -235,6 +235,19 @@ main .point{
 		display: inline;
 	}
 	
+	.picsName{
+		width: 640px; height: 100%;
+		margin: 0 auto; padding: 0;
+		display: -webkit-box;			/* OLD - iOS 6-, Safari 3.1-6 */
+		display: -moz-box;				/* OLD - Firefox 19- (buggy but mostly works) */
+		display: -ms-flexbox;			/* TWEENER - IE 10 */
+		display: -webkit-flex;			/* NEW - Chrome */
+		display: flex;					/* common */
+		flex-direction: row;			
+		justify-content: space-between;	/* 根据容器两边对齐 */
+		align-items: center;			/* 垂直方向对齐 */
+		text-align: center;
+	}
 	main{
 		max-width: 960px;
 		margin: 0 auto;
