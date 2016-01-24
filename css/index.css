@@ -109,6 +109,8 @@ main .point{
 		text-align: center;
 	}
 	nav li{
+		-moz-box-flex: 1;
+		-webkit-box-flex: 1;
 		flex: 1 1 0;
 	}
 	.workEx:before{
