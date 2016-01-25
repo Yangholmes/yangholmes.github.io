@@ -105,7 +105,7 @@ main .point{
 		display: flex;					/* common */
 		flex-direction: row;			
 		justify-content: space-between;	/* 根据容器两边对齐 */ /* Safari 6- 不支持 */
-		align-items: center;			/* 垂直方向对齐 */
+		/*align-items: center;*/			/* 垂直方向对齐 *//* Safari not support! */
 		text-align: center;
 	}
 	nav li{
@@ -115,6 +115,7 @@ main .point{
 		-webkit-box-flex: 1;
 		-webkit-flex: 1 1 0;				/* Safari */
 		flex: 1 1 0;
+		padding: 1.2em;
 	}
 	.workEx:before{
 		content: "ex";
