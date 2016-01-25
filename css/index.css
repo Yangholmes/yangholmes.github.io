@@ -347,4 +347,10 @@ main .point{
 		font-size: .5em;
 		vertical-align: -30%;
 	}
+	.toolbar img{
+		border-radius: 0;
+		width:5em; height: 5em;
+		position: relative;
+		top: -5em; left: -5em;
+	}
 }
