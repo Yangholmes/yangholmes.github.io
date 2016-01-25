@@ -104,13 +104,16 @@ main .point{
 		display: -webkit-flex;			/* NEW - Chrome */
 		display: flex;					/* common */
 		flex-direction: row;			
-		justify-content: space-between;	/* 根据容器两边对齐 */
+		justify-content: space-between;	/* 根据容器两边对齐 */ /* Safari 6- 不支持 */
 		align-items: center;			/* 垂直方向对齐 */
 		text-align: center;
 	}
 	nav li{
+		display: block;
+		text-align: center;
 		-moz-box-flex: 1;
 		-webkit-box-flex: 1;
+		-webkit-flex: 1 1 0;				/* Safari */
 		flex: 1 1 0;
 	}
 	.workEx:before{
@@ -173,26 +176,43 @@ main .point{
 	main article{
 		margin-top: 5em;
 	}
-
 	main article:last-child{
 		margin-bottom: 5em;
 	}
-
 	main h1{
 		font-size: 2em;
 		font-weight: 600;
 		margin-bottom: 2.5rem;/*rem是依body的字体进行缩放*/
 	}
-
 	main .tip{
 		font-weight: 500;
 		font-size: 1em;
 	}
-
 	main .point{
 		font-weight:600;
 		font-size: 1.25em;
 		line-height: 2.34375em;
+	}
+	
+	.toolbar{
+		position: fixed;
+		right: 0; top: 60%;
+		font-size: 1em;
+		text-align: center;
+	}
+	.toolbar *{
+		background-color: rgba(200, 200, 200, .5);
+		width: 2rem; height: 2rem;
+		margin: .1rem 0;
+		border-radius: 20%;
+	}
+	.toolbar a{
+		background: none;
+		vertical-align: sub;
+	}
+	.toolbar .portfolio a{
+		font-size: .5em;
+		vertical-align: -20%;
 	}
 }
 @media only screen and (min-width: 960px){
@@ -214,13 +234,14 @@ main .point{
 		display: -ms-flexbox;			/* TWEENER - IE 10 */
 		display: -webkit-flex;			/* NEW - Chrome */
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-between;	/* Safari not support */
 		align-items: center;
 	}
 	nav ul{
 		justify-content: flex-start;/* 根据容器向左边对齐 */
 	}
 	nav li{
+		-webkit-flex: initial;
 		flex: initial;
 		margin-right: 2.5em;
 	}
@@ -304,5 +325,26 @@ main .point{
 	}
 	footer .socialSite a{
 		padding: 0 20px;
+	}
+	
+	.toolbar{
+		position: fixed;
+		right: 0; top: 60%;
+		font-size: 1.5em;
+		text-align: center;
+	}
+	.toolbar *{
+		background-color: rgba(200, 200, 200, .5);
+		width: 3rem; height: 3rem;
+		margin: .1rem 0;
+		border-radius: 20%;
+	}
+	.toolbar a{
+		background: none;
+		vertical-align: -35%;
+	}
+	.toolbar .portfolio a{
+		font-size: .5em;
+		vertical-align: -30%;
 	}
 }
