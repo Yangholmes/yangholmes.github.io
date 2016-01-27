@@ -127,10 +127,8 @@ main .point{
 	}
 	
 	.resume-main{
-		margin-bottom: 4em;/*留白*/
-	}
-	.resume-main{
 		width: 100%;
+		margin-bottom: 4em;/*留白*/
 	}
 	.gallery{
 		width: 100%;
@@ -253,7 +251,7 @@ main .point{
 	nav i:before{
 		font-size: inherit;
 	}
-	.socialSite{
+	.head-content .socialSite{
 		padding: 1.6em 0;
 	}
 	.socialSite li,
@@ -261,6 +259,9 @@ main .point{
 		display: inline;
 	}
 	
+	.resume-main{
+		margin-bottom: 0;
+	}
 	.picsName{
 		width: 640px; height: 100%;
 		margin: 0 auto; padding: 5em 0;
@@ -310,16 +311,8 @@ main .point{
 		margin: 0 auto;
 		padding: 69.5px 0;
 	}
-
 	footer img{
 		margin-bottom: 40px;
-	}
-
-	footer .socialSite{
-		font-size: 1.5625em;
-		width: 288px;
-		margin: 0 auto;
-		text-align: center;
 	}
 	footer .socialSite{
 		font-size: 1.5625em;
