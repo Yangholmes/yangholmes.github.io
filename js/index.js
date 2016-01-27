@@ -1,5 +1,5 @@
 /**
-* 浏览器检测
+* browser sniffer
 */
 // document.write("<p>Browser name: " + navigator.appName + "</p>");
 // document.write("<p>浏览器版本：")
