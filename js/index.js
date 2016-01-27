@@ -1,8 +1,7 @@
-// var browser=navigator.appName;
-// var b_version=navigator.appVersion;
-// var version=parseFloat(b_version);
-
-// document.write("<p>Browser name: " + browser + "</p>");
+/**
+* 浏览器检测
+*/
+// document.write("<p>Browser name: " + navigator.appName + "</p>");
 // document.write("<p>浏览器版本：")
 // document.write(navigator.appVersion + "</p>");
 // document.write("<p>代码：")

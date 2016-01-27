@@ -105,7 +105,7 @@ main .point{
 		display: flex;					/* common */
 		flex-direction: row;			
 		justify-content: space-between;	/* 根据容器两边对齐 */ /* Safari 6- 不支持 */
-		/*align-items: center;*/			/* 垂直方向对齐 *//* Safari not support! */
+		/*align-items: center;*/		/* 垂直方向对齐 *//* Safari not support! */
 		text-align: center;
 	}
 	nav li{
@@ -113,9 +113,9 @@ main .point{
 		text-align: center;
 		-moz-box-flex: 1;
 		-webkit-box-flex: 1;
-		-webkit-flex: 1 1 0;				/* Safari */
+		-webkit-flex: 1 1 0;			/* Safari */
 		flex: 1 1 0;
-		padding: 1.2em;
+		padding: 1.2em 0;
 	}
 	.workEx:before{
 		content: "ex";
@@ -229,14 +229,14 @@ main .point{
 	.head-content{
 		max-width: 960px;
 		height: 100%;
-		margin: 0 auto;
+		margin: 0 auto; padding: 0 .5em;
 		display: -webkit-box;			/* OLD - iOS 6-, Safari 3.1-6 */
 		display: -moz-box;				/* OLD - Firefox 19- (buggy but mostly works) */
 		display: -ms-flexbox;			/* TWEENER - IE 10 */
 		display: -webkit-flex;			/* NEW - Chrome */
 		display: flex;
 		justify-content: space-between;	/* Safari not support */
-		align-items: center;
+		/*align-items: center;*/		/* 垂直方向对齐 *//* Safari not support! */
 	}
 	nav ul{
 		justify-content: flex-start;/* 根据容器向左边对齐 */
@@ -245,12 +245,16 @@ main .point{
 		-webkit-flex: initial;
 		flex: initial;
 		margin-right: 2.5em;
+		padding: 1.6em 0;
 	}
 	nav br{
 		display: none;
 	}
 	nav i:before{
 		font-size: inherit;
+	}
+	.socialSite{
+		padding: 1.6em 0;
 	}
 	.socialSite li,
 	footer li{
@@ -259,7 +263,7 @@ main .point{
 	
 	.picsName{
 		width: 640px; height: 100%;
-		margin: 0 auto; padding: 0;
+		margin: 0 auto; padding: 5em 0;
 		display: -webkit-box;			/* OLD - iOS 6-, Safari 3.1-6 */
 		display: -moz-box;				/* OLD - Firefox 19- (buggy but mostly works) */
 		display: -ms-flexbox;			/* TWEENER - IE 10 */
@@ -267,8 +271,7 @@ main .point{
 		display: flex;					/* common */
 		flex-direction: row;			
 		justify-content: space-between;	/* 根据容器两边对齐 */
-		align-items: center;			/* 垂直方向对齐 */
-		text-align: center;
+		/*align-items: center;*/		/* 垂直方向对齐 *//* Safari not support! */
 	}
 	main{
 		max-width: 960px;
