@@ -15,9 +15,9 @@ $(function(){
  * Init setting feature
  */
 var init = function(){
-	var tips = window.location.search.match(/\?\w+=(\w*)/);
+	var tips = window.location.search.match(/\?\w+=([%\w]+)/);
 	if(tips){
-		text = tips[1];
+		text = decodeURI(tips[1]);
 	}
 	$('#menu-icon').click(function(){
 		$('#setting form').toggle(500);
