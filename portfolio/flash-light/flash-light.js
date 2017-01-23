@@ -1,17 +1,18 @@
 var width=0, height=0, dotDiameter=10,
-	style = {'fontSize': '250px', 'fontFamily': 'Times New Roman', 'color': 'rgb(0, 255, 0)'};
+	style = {'fontSize': '250px', 'fontFamily': 'Microsoft Yahei', 'color': 'rgb(255, 255, 255)'};
 
-var canvas = document.getElementById('matrix'),
+var canvas = $('#matrix')[0],
 		ctx = canvas.getContext('2d');
 
 var dots = [];
 
-var rate = 1;
+var rate = 0.5;
 
 $(function(){
-	matrix('Yangholmes');
+	matrix('马户！帅气！');
 	styleCanvas();
 	render();
+	translation();
 });
 
 /**
@@ -62,10 +63,12 @@ var matrix = function(text){
  * set canvas style
  */
 var styleCanvas = function(){
-	canvas.width = width;
+	canvas.width = $('body').width();
+	// canvas.width = width;
 	canvas.height = height;
 	ctx.fillStyle = style.color;
 	ctx.clearRect(0, 0, width, height);
+	ctx.translate($('body').width(), 0);
 }
 
 /**
@@ -75,6 +78,7 @@ var render = function(){
 	//画圆
 	for(var j = 0;j< dots.length;j++){
 		ctx.beginPath();
+		// ctx.arc(dots[j].x, dots[j].y, dotDiameter/2, 0, 2 * Math.PI, true);
 		ctx.arc(dots[j].x, dots[j].y, dotDiameter/2, 0, 2 * Math.PI, true);
 		ctx.closePath();
 		ctx.fill();
@@ -84,10 +88,17 @@ var render = function(){
 /**
  * animation
  */
+var i = 0;
 var translation = function(){
 	if(typeof rate != 'number') rate = 1;
 	x = rate * dotDiameter * -1;
 
+	i += x;
+	if(i*-1 >= $('body').width() + width){
+		console.log( i );
+		ctx.translate(i*-1, 0);
+		i=0;
+	}
 	ctx.save();
 	ctx.clearRect(0,0,width,height); // clear canvas
 	ctx.translate(x, 0);
