@@ -7,14 +7,18 @@ var canvas = $('#matrix')[0],
 var text = '你最棒！';
 
 $(function(){
-	play();
 	init();
+	play();
 });
 
 /**
  * Init setting feature
  */
 var init = function(){
+	var tips = window.location.search.match(/\?\w+=(\w*)/);
+	if(tips){
+		text = tips[1];
+	}
 	$('#menu-icon').click(function(){
 		$('#setting form').toggle(500);
 	});
