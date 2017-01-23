@@ -31,6 +31,7 @@ var init = function(){
 					case 'font': style.fontFamily = inputs[i].value; break;
 					case 'color': style.color = inputs[i].value; break;
 					case 'size': style.fontSize = inputs[i].value; break;
+					// case 'diameter': dotDiameter = inputs[i].value; break;
 					default: break;
 				}
 			}
