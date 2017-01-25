@@ -1,11 +1,15 @@
-var width=0, height=0, dotDiameter=10,
-	style = {'fontSize': '250px', 'fontFamily': 'Microsoft Yahei', 'color': 'rgb(255, 0, 0)'};
+var width=0, height=0,
+		dotDiameter=10,
+		style = {'fontSize': '250px', 'fontFamily': 'Microsoft Yahei', 'color': 'rgb(255, 0, 0)'};
 
 var canvas = $('#matrix')[0],
 		ctx = canvas.getContext('2d');
 
 var text = '你最棒！';
 
+/**
+ * began my trip
+ */
 $(function(){
 	init();
 	play();
@@ -15,10 +19,9 @@ $(function(){
  * Init setting feature
  */
 var init = function(){
-	var tips = window.location.search.match(/\?\w+=([%\w]+)/);
-	if(tips){
+	var tips = window.location.search.match(/\?text=([%?\w]+)/);
+	if(tips)
 		text = decodeURI(tips[1]);
-	}
 	$('#menu-icon').click(function(){
 		$('#setting form').toggle(500);
 	});
@@ -36,10 +39,10 @@ var init = function(){
 				}
 			}
 			play();
-			$('#setting form').hide(500);
+			$('#setting form').fadeOut(500);
 		}
 		else{
-			$('#setting form').hide(500);
+			$('#setting form').fadeOut(500);
 		}
 	});
 }
