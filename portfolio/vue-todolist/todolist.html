@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
+
+  <style>
+    #todo-list{
+      margin: 1em 1em;
+    }
+    #list-content{
+      width: 50em;
+    }
+    .remove{
+      color: rgb(200, 200, 200);
+      text-decoration:line-through;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="todo-list">
+    <div class="input-append">
+      <input type="text" class='span2' placeholder="New!" v-model="item.content"/>
+      <button class="btn" type="button" @click="add()">Add</button>
+    </div>
+
+    <div class="">
+      <input type="text" class="" v-model="searchQuery" placeholder="Enter key words to search~" />
+    </div>
+
+    <div class="" id="list-content">
+      <todo-component :list="list" :query-key="searchQuery"></todo-component>
+    </div>
+  </div>
+
+  <template id="todo-template">
+    <table class="table table-hover">
+      <tbody>
+        <tr :class="{remove: item.remove}" v-for="item in listFilter">
+          <td><input type="checkbox" @click="finish(item)"></td>
+          <td @dblclick="update(item)">{{ item.content }}</td>
+          <td><button :class="{'btn-danger': item.remove, btn: true}" @click="remove(item)">{{ item.remove?'恢复':'删除' }}</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </template>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+    var todoCpm = Vue.component('todo-component', {
+      template: '#todo-template',
+      props: ['list', 'queryKey'],
+      methods: {
+        finish: function(item){
+        },
+        remove: function(item){
+          this.list.forEach(function(e){
+            if(item == e)
+              e.remove = !e.remove;
+          });
+          return;
+        },
+        update: function(item){
+          console.log(item);
+        }
+      },
+      computed: {
+        listFilter: function(){
+          let self = this;
+          return self.list.filter(function (item) {
+            return item.content.indexOf(self.queryKey) !== -1
+          })
+        }
+      }
+    });
+    var todo = new Vue({
+      el: '#todo-list',
+      data: {
+        searchQuery: '',
+        list: [
+          {content: '刷牙', remove: true},
+          {content: '写博客', remove: false}
+        ],
+        item: {content: '', remove: false}
+      },
+      methods: {
+        add: function(){
+          var item = {};
+          item.content = this.item.content; item.remove = this.item.remove;
+          if(item.content)
+            this.list.push(item);
+          item = {};
+          this.item.content = '';
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
