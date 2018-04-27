@@ -5,7 +5,7 @@
  */
 (function () {
     timer();
-    let mask = $('.mask');
+    eventAgent();
 })();
 
 function timer() {
@@ -30,6 +30,16 @@ function drawTimer(time) {
         ${minute}分钟
         ${second}秒钟
     `);
+}
+
+function eventAgent() {
+    $('.call-me').click(e => {
+        $('<span>15989158349</span>').click();
+        console.log($('<span>15989158349</span>'));
+    });
+    $('.my-darling').click(e => {});
+    $('.show-heart').click(e => {});
+    $('.poem').click(e => {});
 }
 
 function datetimeFormat(dt = new Date(), format = 'Y-M-d H:i') {

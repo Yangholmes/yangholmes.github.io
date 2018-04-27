@@ -7,7 +7,7 @@
  */
 (function () {
     timer();
-    var mask = $('.mask');
+    eventAgent();
 })();
 
 function timer() {
@@ -27,6 +27,16 @@ function drawTimer(time) {
     var second = Math.floor(time / 1000 - minute * 60 - hour * 60 * 60 - day * 24 * 60 * 60);
 
     clock.html('\n        ' + day + '\u5929\n        ' + hour + '\u5C0F\u65F6\n        ' + minute + '\u5206\u949F\n        ' + second + '\u79D2\u949F\n    ');
+}
+
+function eventAgent() {
+    $('.call-me').click(function (e) {
+        $('<span>15989158349</span>').click();
+        console.log($('<span>15989158349</span>'));
+    });
+    $('.my-darling').click(function (e) {});
+    $('.show-heart').click(function (e) {});
+    $('.poem').click(function (e) {});
 }
 
 function datetimeFormat() {
