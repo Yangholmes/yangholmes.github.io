@@ -30,12 +30,28 @@ function drawTimer(time) {
 }
 
 function eventAgent() {
-    $('.call-me').click(function (e) {
-        $('<span>15989158349</span>').click();
-        console.log($('<span>15989158349</span>'));
+    // 给我打电话
+    $('.call-me').on('touchstart', function (e) {
+        var call = window.open('tel://15989158349');
+        window.setTimeout(function () {
+            return call.close();
+        }, 0);
     });
     $('.my-darling').click(function (e) {});
-    $('.show-heart').click(function (e) {});
+    $('.show-heart').on('touchstart', function (e) {
+        var position = {
+            x: e.touches[0].clientX,
+            y: e.touches[0].clientY
+        };
+        $('<img src="icon-32.png" alt="爱你">').css({
+            display: 'none',
+            position: 'absolute',
+            top: position.y,
+            left: position.x
+        }).appendTo($('body')).fadeIn(500, function () {
+            $(this).fadeOut(500);
+        });
+    });
     $('.poem').click(function (e) {});
 }
 

@@ -33,12 +33,26 @@ function drawTimer(time) {
 }
 
 function eventAgent() {
-    $('.call-me').click(e => {
-        $('<span>15989158349</span>').click();
-        console.log($('<span>15989158349</span>'));
+    // 给我打电话
+    $('.call-me').on('touchstart', e => {
+        let call = window.open('tel://15989158349');
+        window.setTimeout(() => call.close(), 0);
     });
     $('.my-darling').click(e => {});
-    $('.show-heart').click(e => {});
+    $('.show-heart').on('touchstart', e => {
+        let position = {
+            x: e.touches[0].clientX,
+            y: e.touches[0].clientY
+        };
+        $('<img src="icon-32.png" alt="爱你">').css({
+            display: 'none',
+            position: 'absolute',
+            top: position.y,
+            left: position.x
+        }).appendTo($('body')).fadeIn(500, function () {
+            $(this).fadeOut(500);
+        });
+    });
     $('.poem').click(e => {});
 }
 
