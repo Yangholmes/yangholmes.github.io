@@ -35,8 +35,9 @@ function drawTimer(time) {
 function eventAgent() {
     // 给我打电话
     $('.call-me').on('touchstart', e => {
-        let call = window.open('tel://15989158349');
-        window.setTimeout(() => call.close(), 0);
+        location.href = 'tel://15989158349';
+        // let call = window.open('tel://15989158349');
+        // window.setTimeout(() => call.close(), 0);
     });
     $('.my-darling').click(e => {});
     $('.show-heart').on('touchstart', e => {

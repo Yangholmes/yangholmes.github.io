@@ -33,9 +33,7 @@ function eventAgent() {
     // 给我打电话
     $('.call-me').on('touchstart', function (e) {
         var call = window.open('tel://15989158349');
-        window.setTimeout(function () {
-            return call.close();
-        }, 0);
+        // window.setTimeout(() => call.close(), 0);
     });
     $('.my-darling').click(function (e) {});
     $('.show-heart').on('touchstart', function (e) {
