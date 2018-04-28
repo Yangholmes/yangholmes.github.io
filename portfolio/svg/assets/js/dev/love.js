@@ -44,7 +44,7 @@ function eventAgent() {
             x: e.touches[0].clientX,
             y: e.touches[0].clientY
         };
-        $('<img src="icon-32.png" alt="爱你">').css({
+        $('<img src="./assets/img/love-you.svg" alt="爱你">').css({
             width: 16,
             height: 16,
             display: 'none',
