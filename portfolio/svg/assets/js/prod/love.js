@@ -44,6 +44,8 @@ function eventAgent() {
             y: e.touches[0].clientY
         };
         $('<img src="icon-32.png" alt="爱你">').css({
+            width: 16,
+            height: 16,
             display: 'none',
             position: 'absolute',
             top: position.y,
