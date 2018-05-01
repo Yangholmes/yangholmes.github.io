@@ -5,7 +5,7 @@ var width=0, height=0,
 var canvas = $('#matrix')[0],
 		ctx = canvas.getContext('2d');
 
-var text = '你最棒！';
+var text = '請輸入。。';
 
 /**
  * began my trip
@@ -19,9 +19,12 @@ $(function(){
  * Init setting feature
  */
 var init = function(){
-	var tips = window.location.search.match(/\?text=([%?\w]+)/);
+	var tips = window.location.search.match(/[?&]text=([%?\w]+)/);
 	if(tips)
 		text = decodeURI(tips[1]);
+	var title = window.location.search.match(/[?&]title=([%?\w]+)/);
+	if(title)
+		document.getElementsByTagName('title')[0].innerHTML = decodeURI(title[1]);
 	$('#menu-icon').click(function(){
 		$('#setting form').toggle(500);
 	});
