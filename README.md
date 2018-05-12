@@ -8,4 +8,6 @@
 
 `npm i`
 
+`node ./index.js`
+
 then enjoy it~
