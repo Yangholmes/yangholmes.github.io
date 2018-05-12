@@ -1,0 +1,27 @@
+{
+  "name": "yangholmes_page",
+  "version": "2.0.0",
+  "description": "Yangholmes的个人页面",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yangholmes/yangholmes.github.io.git"
+  },
+  "keywords": [
+    "Yangholmes",
+    "Resume",
+    "Page"
+  ],
+  "author": "Yangholmes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yangholmes/yangholmes.github.io/issues"
+  },
+  "homepage": "https://github.com/Yangholmes/yangholmes.github.io#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
