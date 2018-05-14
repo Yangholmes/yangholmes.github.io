@@ -8,6 +8,6 @@
 
 `npm i`
 
-`node ./index.js`
+`node ./index.js` or `npm run go`
 
 then enjoy it~

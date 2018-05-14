@@ -1,1 +1,1 @@
-location.replace("resume/");
+location.replace("./blog/");
