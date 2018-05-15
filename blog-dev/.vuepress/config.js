@@ -15,7 +15,7 @@ module.exports = {
                 title: '技术小文章',
                 collapsable: false,
                 children: [
-                    'how-to-create-a-vue-component/',
+                    'how-to-create-ex-tag/',
                     'playground/'
                 ]
             }]
