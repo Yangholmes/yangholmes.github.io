@@ -10,9 +10,15 @@ module.exports = {
         }]
     ],
     themeConfig: {
-        sidebar: [
-            '/playground/',
-            '/vuepress-test/'
-        ]
+        sidebar: {
+            '/tech-articles/': [{
+                title: '技术小文章',
+                collapsable: false,
+                children: [
+                    'how-to-create-a-vue-component/',
+                    'playground/'
+                ]
+            }]
+        }
     }
 };

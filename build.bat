@@ -1,5 +1,8 @@
-echo first, build the blog
+@echo first, build the blog
 call npm run blog:build
 
-echo second, move dist into blog directory
+@echo second, remove all files and folders in ./blog
+del .\blog\*  -recurse /Q
+
+@echo third, move dist into blog directory
 xcopy .\blog-dev\.vuepress\dist\* .\blog /E /Y
