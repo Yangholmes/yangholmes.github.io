@@ -1,6 +1,5 @@
 ### Yangholmes 的小作品
-#### Yangholmes Playground
-*** 2018-05-14 ***
+**2018-05-14**
 
 一些小玩意儿列表
 1. <a target="_blank" href="../../../playground/canvas/canvas.html">跟随指尖滑动的彩色小圆</a>
