@@ -10,6 +10,14 @@ module.exports = {
         }]
     ],
     themeConfig: {
+        lastUpdated: 'Last Updated',
+        nav: [{
+            text: '技术小文章',
+            link: '/tech-articles/'
+        }, {
+            text: '我的简历',
+            link: 'http://yangholmes.github.io/playground/resume/'
+        }],
         sidebar: {
             '/tech-articles/': [{
                 title: '技术小文章',
