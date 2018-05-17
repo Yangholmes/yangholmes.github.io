@@ -6,7 +6,7 @@ module.exports = {
         ['link', {
             rel: 'icon',
             type: 'image/x-icon',
-            href: 'http://yangholmes.github.io/assets/favicon.ico'
+            href: 'http://yangholmes.github.io/assets/icon.png'
         }]
     ],
     themeConfig: {
