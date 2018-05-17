@@ -6,10 +6,11 @@ module.exports = {
         ['link', {
             rel: 'icon',
             type: 'image/x-icon',
-            href: './favicon.ico'
+            href: 'http://yangholmes.github.io/assets/favicon.ico'
         }]
     ],
     themeConfig: {
+        logo: 'http://yangholmes.github.io/assets/yangholmes.jpg',
         lastUpdated: 'Last Updated',
         nav: [{
             text: '技术小文章',
