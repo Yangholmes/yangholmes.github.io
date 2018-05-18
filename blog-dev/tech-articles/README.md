@@ -10,7 +10,12 @@
 
 <div class="contact">
     <p>交流热线</p>
-    <p>Wechat: Yangholmes</p>
+    <p>Wechat:
+        <span class="wechat">
+            <span class="wechat-name">Yangholmes</span>
+            <span  class="wechat-qr"><img src="http://yangholmes.github.io/assets/WeChat.png"></span>
+        <span>
+    </p>
     <p>E-mail: <a href="mailto://yangholmes@126.com">yangholmes@126.com</a></p>
 </div>
 
@@ -21,5 +26,24 @@
     .contact p {
         margin: 0;
         line-height: 1.5;
+    }
+    .wechat {
+        display: inline-block;
+    }
+    .wechat-name {
+        display: block;
+    }
+    .wechat-name:hover + .wechat-qr {
+        opacity: 1;
+        z-index: 1;
+    }
+    .wechat-qr {
+        opacity: 0;
+        transition: opacity 1s;
+        width: 128px;
+        height: auto;
+        padding: .25em;
+        position: absolute;
+        z-index: -999;
     }
 </style>
