@@ -5,7 +5,6 @@ module.exports = {
     head: [
         ['link', {
             rel: 'icon',
-            type: 'image/x-icon',
             href: 'http://yangholmes.github.io/assets/icon.png'
         }]
     ],
@@ -25,6 +24,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     'how-to-create-ex-tag/',
+                    'hello-vue-extends/',
                     'playground/'
                 ]
             }]
