@@ -25,6 +25,7 @@ module.exports = {
                 children: [
                     'how-to-create-ex-tag/',
                     'hello-vue-extends/',
+                    'brainfuck/',
                     'playground/'
                 ]
             }]
