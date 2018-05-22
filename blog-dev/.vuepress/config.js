@@ -5,11 +5,11 @@ module.exports = {
     head: [
         ['link', {
             rel: 'icon',
-            href: 'http://yangholmes.github.io/assets/icon.png'
+            href: 'http://yangholmes.github.io/assets/img/icon.png'
         }]
     ],
     themeConfig: {
-        logo: 'http://yangholmes.github.io/assets/yangholmes.jpg',
+        logo: 'http://yangholmes.github.io/assets/img/yangholmes.jpg',
         lastUpdated: 'Last Updated',
         nav: [{
             text: '技术小文章',
