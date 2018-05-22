@@ -31,7 +31,7 @@
 
 <body>
     <div id="not-found">
-        <p :style="`filter: drop-shadow(${x}px ${y}px 5px #aaa)`">404</p>
+        <p :style="`filter: drop-shadow(${x}px ${y}px ${blur}px #aaa)`">404</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -47,7 +47,8 @@
                     x: 0,
                     y: 0
                 },
-                offset: 0.2
+                offset: 0.5,
+                blur: 3
             },
             mounted() {
                 this.init();
@@ -72,6 +73,8 @@
                         let delY = position.y - this.center.y;
                         this.x = -1 * this.offset * delX;
                         this.y = -1 * this.offset * delY;
+                        let blur = 3 + Math.hypot(this.x, this.y) / 20;
+                        this.blur = blur < 20 ? blur : 20;
                     });
                     window.addEventListener('resize', (evt) => {
                         this.init();
