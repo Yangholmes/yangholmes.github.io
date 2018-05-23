@@ -75,7 +75,7 @@
                         this.x = -1 * this.offset * delX;
                         this.y = -1 * this.offset * delY;
                         let blur = 3 + Math.hypot(this.x, this.y) / 20;
-                        this.blur = blur < 20 ? blur : 20;
+                        this.blur = blur > 20 ? blur : 20;
                     });
                     window.addEventListener('resize', (evt) => {
                         this.init();
