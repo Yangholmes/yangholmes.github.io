@@ -3,30 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="404" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <title>页面离家出走了T.T</title>
+    <meta name="description" content="404">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="icon" href="./assets/img/icon.png">
-    <link type="text/css" rel="stylesheet" href="./assets/style/css/global.css">
-    <link type="text/css" rel="stylesheet" href="./assets/style/css/fonts.css">
+    <link rel="stylesheet" href="./assets/style/css/global.css">
+    <link rel="stylesheet" href="./assets/style/css/fonts.css">
     <style media="screen">
-        #not-found {
-            user-select: none;
-            font-family: playfair;
-            font-weight: 600;
-            font-size: 7em;
-            color: white;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #not-found p {
-            display: inline-block;
-            width: auto;
-            height: auto;
-        }
+    #not-found {
+        user-select: none;
+        font-family: playfair;
+        font-weight: 600;
+        font-size: 7em;
+        color: #fff;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #not-found p {
+        display: inline-block;
+        width: auto;
+        height: auto;
+    }
     </style>
 </head>
 
@@ -65,7 +65,7 @@
                     };
                 },
                 regListener() {
-                    window.addEventListener('mousemove', (evt) => {
+                    window.addEventListener('mousemove', evt => {
                         let position = {
                             x: evt.clientX,
                             y: evt.clientY
@@ -75,10 +75,9 @@
                         this.x = -1 * this.offset * delX;
                         this.y = -1 * this.offset * delY;
                         let blur = 3 + Math.hypot(this.x, this.y) / 20;
-                        console.log(blur);
                         this.blur = blur < 20 ? blur : 20;
                     });
-                    window.addEventListener('resize', (evt) => {
+                    window.addEventListener('resize', evt => {
                         this.init();
                     });
                 }

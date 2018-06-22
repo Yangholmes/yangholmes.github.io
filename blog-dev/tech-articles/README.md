@@ -13,7 +13,7 @@
     <p>Wechat:
         <span class="wechat">
             <span class="wechat-name">Yangholmes</span>
-            <span  class="wechat-qr"><img src="http://yangholmes.github.io/assets/WeChat.png"></span>
+            <span  class="wechat-qr"><img src="http://yangholmes.github.io/assets/img/WeChat.png"></span>
         <span>
     </p>
     <p>E-mail: <a href="mailto://yangholmes@126.com">yangholmes@126.com</a></p>
