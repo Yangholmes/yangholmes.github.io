@@ -26,6 +26,7 @@ module.exports = {
                     'how-to-create-ex-tag/',
                     'hello-vue-extends/',
                     'brainfuck/',
+                    'why-atom/',
                     'playground/'
                 ]
             }]
