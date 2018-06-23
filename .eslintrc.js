@@ -59,6 +59,8 @@ module.exports = {
         // 运算符置于行首
         'operator-linebreak': [2, 'before'],
         // 不要带逗号小尾巴
-        'comma-dangle': [2, 'never']
+        'comma-dangle': [2, 'never'],
+        // 不允许使用 `var` 声明变量，只允许使用 `let` 和 `const`
+        'no-var': 2
     }
 };
