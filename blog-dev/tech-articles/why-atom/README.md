@@ -1,9 +1,9 @@
 ### Atom 改装指南
 **2018-06-22**
 
-`忽闻微软收GitHub，感觉Atom要凉凉`
-
 <img src="./Atom-logo.svg" alt="Atom logo">
+
+`忽闻微软收GitHub，感觉Atom要凉凉`
 
 #### 前言
 优秀的编辑器就像优秀的车一样，载着家人的时候舒适安全，开去越野的时候动力强劲。爱驾驶的人喜欢购买基本款，然后按照自己的习惯和喜好改装，获得独一无二最适合自己的车子。和这些人一样，程序员也喜欢使用能够自己改装的编辑器，打造出最适合自己的IDE。
@@ -52,4 +52,39 @@ Atom的配置可以很“懒惰”。
 
 非懒人向的设置时通过修改Atom的配置文件来自定义外观，相比起懒人向，非懒人向可配置的内容更加丰富，配置项检索更加方便。
 
-早期的Atom使用`coffee`编写，尽管后面改用了原生`JavaScript`，但是这个编辑器还是保留了一些`coffee`的痕迹。
+<img src="./configurations.png" alt="设置">
+
+Atom配置入口在这里
+
+由于Atom是Electron项目，所以整个编辑器其实是一个Web，里面每一个模块都是DOM，所以可以和操作网页一样操作这个编辑器。
+
+* Config：[~/.atom/config.cson] 主配置文件，修改这个文件会同步到交互式设置页面，反过来，交互式页面中修改了设置，主配置文件相应的键值也会改变
+* Init Script：[~/.atom/init.coffee] Atom启动脚本
+* Keymap：[~/.atom/keymap.cson] 定义快建建，会同步到交互式的快捷键设置页面
+* Snippets：[~/.atom/snippets.cson] 自定义代码补全规则
+* Stylesheet：[~/.atom/styles.less] 定义编辑器外观
+
+早期的Atom使用`coffee`编写，尽管后面改用了原生`JavaScript`，但是这个编辑器还是保留了一些`coffee`的痕迹，例如Atom的初始化启动脚本还是要使用`coffee`编写。
+
+###### 举栗子
+
+1. styles.less
+
+    styles.less用来定义编辑器外观,实际上就是一个普通的less文件,Atom将这份less编译成css然后用于样式渲染。
+
+    ```less
+    // 将编辑器内的光标设置成红色
+    atom-text-editor .cursor {
+        border-color: red;
+    }
+    ```
+
+    效果:
+
+    <img src="./styles.less.gif" alt="styles.less">
+
+2. init.coffee
+
+    ```coffee
+
+    ```
