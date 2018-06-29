@@ -32,7 +32,7 @@ Atom的配置可以很“懒惰”。
 
 <img src="./File-Settings.gif" alt="Settings">
 
-打开设置面板（File->Settings）
+打开设置面板，`File->Settings`，熟手之后也可以直接使用快捷方式 `Ctrl + ,`
 
 <img src="./Settings-panel.png" alt="设置面板">
 
@@ -58,11 +58,11 @@ Atom配置入口在这里
 
 由于Atom是Electron项目，所以整个编辑器其实是一个Web，里面每一个模块都是DOM，所以可以和操作网页一样操作这个编辑器。
 
-* Config：[~/.atom/config.cson] 主配置文件，修改这个文件会同步到交互式设置页面，反过来，交互式页面中修改了设置，主配置文件相应的键值也会改变
-* Init Script：[~/.atom/init.coffee] Atom启动脚本
+* config：[~/.atom/config.cson] 主配置文件，修改这个文件会同步到交互式设置页面，反过来，交互式页面中修改了设置，主配置文件相应的键值也会改变
+* init script：[~/.atom/init.coffee] Atom启动脚本
 * Keymap：[~/.atom/keymap.cson] 定义快建建，会同步到交互式的快捷键设置页面
-* Snippets：[~/.atom/snippets.cson] 自定义代码补全规则
-* Stylesheet：[~/.atom/styles.less] 定义编辑器外观
+* snippets：[~/.atom/snippets.cson] 自定义代码补全规则
+* stylesheet：[~/.atom/styles.less] 定义编辑器外观
 
 早期的Atom使用`coffee`编写，尽管后面改用了原生`JavaScript`，但是这个编辑器还是保留了一些`coffee`的痕迹，例如Atom的初始化启动脚本还是要使用`coffee`编写。
 
@@ -85,6 +85,46 @@ Atom配置入口在这里
 
 2. init.coffee
 
-    ```coffee
+    一个著名的示例，调用Atom的Selection API和Clipboard API，添加一个`Markdown`快速粘贴超链接命令。
 
+    ```coffee
+    atom.commands.add 'atom-text-editor', 'markdown:paste-as-link', ->
+    return unless editor = atom.workspace.getActiveTextEditor()
+
+    selection = editor.getLastSelection()
+    clipboardText = atom.clipboard.read()
+
+    selection.insertText("[#{selection.getText()}](#{clipboardText})")
     ```
+
+    效果：
+
+    <img src="./init.coffee.gif" alt="init.coffee">
+
+3. keymap.cson
+
+    我们已经在`init.coffee`中注册好了一个`markdown:paste-as-link`指令，现在试着将这个指令映射到一组快捷键`ctrl-alt-shift-m`上。
+
+    ```cson
+    'atom-workspace':
+    'ctrl-alt-shift-m': 'markdown:paste-as-link'
+    ```
+
+    效果：
+
+    <img src="./keymap.cson.gif" alt="keymap.cson">
+
+4. snippets.cson
+
+    `snippets.cson`可以用来定义一些常用的代码片段，例如我们常在`JavaScript`中使用`console.debug`调试log，但觉得`console`语句太长了，希望可以输入关键字自动补全。
+
+    ```cson
+    '.source.js':
+        'console debug':
+            'prefix': 'debug'
+            'body': 'console.debug($1)'
+    ```
+
+    效果：
+
+    <img src="./snippets.cson.gif" alt="snippets.scson">
