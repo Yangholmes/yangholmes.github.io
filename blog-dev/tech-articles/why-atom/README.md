@@ -164,3 +164,5 @@ Atom其实很简单，就是一个Chromium框架，甚至连搜索/替换的功�
     代码块预览，类似Sublime Text 3 `minimap`的功能。
 
     <img src="./minimap.png" alt="minimap">
+
+#### 缺点和隐患
