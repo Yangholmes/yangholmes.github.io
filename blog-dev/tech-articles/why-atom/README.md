@@ -128,3 +128,39 @@ Atom配置入口在这里
     效果：
 
     <img src="./snippets.cson.gif" alt="snippets.scson">
+
+#### 插件
+
+Atom其实很简单，就是一个Chromium框架，甚至连搜索/替换的功能都没有，更不用说什么代码着色、代码补全这些稍微高级一点的功能了。
+
+作为一款现代编辑器，如果面面俱到包含所有功能的话，那么软件可能会做得体积特别大，加载运行特别慢。况且，任何一款软件都不可能做到面面俱到，符合每一个人的口味，特别是程序员，操不同语言的程序员需要的工具不同，就算是操相同语言的程序员，他们所偏好的东西也大相径庭。
+
+所以Atom采用了`Package`的方式来满足不同的需求，任何功能都可以用“包”（或者我们称它为“插件”）的方式来安装，比如Atom的文件列表就是通过一个叫`tree-view`的插件实现的。Atom默认安装了80个核心插件用于满足基本需要（版本是1.28.0），除了文件树、标签等编辑器框架，还包含了33种流行的计算机语言着色插件和Git，其实已经有所冗余。
+
+<img src="./core-packages.png" alt="核心插件">
+
+其他个性化的插件可以在Atom的社区中下载安装，访问[https://atom.io/packages](https://atom.io/packages)，输入关键字搜索出到众多第三方插件，点击进入可以查看每一个插件的介绍、GitHub地址、版本更迭、bugs列表和授权方式。Atom内置了一个类似`npm`的命令行工具`apm`，在社区中找到自己心仪的插件之后，只需要运行`apm install [package]`即可将插件安装到Atom中去。当然Atom也提供了更快的安装方式，在设置中心Install板块中搜索社区提供的插件，得到结果后，只需要动动手指点击“安装”按钮就可以将插件下载安装到本地了。
+
+第三方插件允许自由安装、配置、删除、启用、停用，而核心插件不允许删除，只允许配置、停用和启用。
+
+##### 插件推荐
+
+由于插件的获取太简单了，所以诸如语言支持这一类的插件就不赘述，这里推荐几款我觉着对前端特别实用的插件。
+
+1. [regex-railroad-diagram](https://atom.io/packages/regex-railroad-diagram)
+
+    实时正则表达式图表，光标到达之处如果存在正则表达式，则会在表机器下方渲染出正则表达式匹配路线图。
+
+    <img src="./regex-railroad-diagram.png" alt="regex-railroad-diagram">
+
+2. [color-picker](https://atom.io/packages/color-picker)
+
+    颜色选择器，样式编写必备。支持`HEX`，`HEXa`，`RGB`，`RGBa`，`HSL`，`HSLa`，`HSV`，`HSVa`，`VEC3`和`VEC4`格式，支持`sass`和`less`颜色变量。
+
+    <img src="./color-picker.gif" alt="color-picker">
+
+3. [minimap](https://atom.io/packages/minimap)
+
+    代码块预览，类似Sublime Text 3 `minimap`的功能。
+
+    <img src="./minimap.png" alt="minimap">

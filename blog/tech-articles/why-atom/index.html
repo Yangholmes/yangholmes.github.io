@@ -7,7 +7,7 @@
     <meta name="description" content="Yangholmes Blog">
     <link rel="icon" href="http://yangholmes.github.io/assets/img/icon.png">
     
-    <link rel="preload" href="/blog/assets/css/0.styles.588e8900.css" as="style"><link rel="preload" href="/blog/assets/js/app.c9235b26.js" as="script"><link rel="preload" href="/blog/assets/js/2.f6eb54fe.js" as="script"><link rel="prefetch" href="/blog/assets/js/1.78e057c3.js"><link rel="prefetch" href="/blog/assets/js/3.6011bb9c.js"><link rel="prefetch" href="/blog/assets/js/4.0d16ae96.js"><link rel="prefetch" href="/blog/assets/js/5.6ab3c8eb.js"><link rel="prefetch" href="/blog/assets/js/6.c03cad8c.js"><link rel="prefetch" href="/blog/assets/js/7.d0f2d367.js"><link rel="prefetch" href="/blog/assets/js/8.659b84c0.js">
+    <link rel="preload" href="/blog/assets/css/0.styles.588e8900.css" as="style"><link rel="preload" href="/blog/assets/js/app.c9e7c8fb.js" as="script"><link rel="preload" href="/blog/assets/js/2.d11d4b14.js" as="script"><link rel="prefetch" href="/blog/assets/js/1.7f8d43c1.js"><link rel="prefetch" href="/blog/assets/js/3.bbab0934.js"><link rel="prefetch" href="/blog/assets/js/4.1671b94a.js"><link rel="prefetch" href="/blog/assets/js/5.4c56c16a.js"><link rel="prefetch" href="/blog/assets/js/6.b02a977b.js"><link rel="prefetch" href="/blog/assets/js/7.746e7099.js"><link rel="prefetch" href="/blog/assets/js/8.afaba30a.js">
     <link rel="stylesheet" href="/blog/assets/css/0.styles.588e8900.css">
   </head>
   <body>
@@ -30,13 +30,13 @@ selection.insertText(&quot;[#{selection.getText()}](#{clipboardText})&quot;)
     'console debug':
         'prefix': 'debug'
         'body': 'console.debug($1)'
-</code></pre><p>效果：</p><img src="/blog/assets/img/snippets.cson.4a18675d.gif" alt="snippets.scson"></li></ol></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+</code></pre><p>效果：</p><img src="/blog/assets/img/snippets.cson.4a18675d.gif" alt="snippets.scson"></li></ol><h4 id="插件"><a href="#插件" aria-hidden="true" class="header-anchor">#</a> 插件</h4><p>Atom其实很简单，就是一个Chromium框架，甚至连搜索/替换的功能都没有，更不用说什么代码着色、代码补全这些稍微高级一点的功能了。</p><p>作为一款现代编辑器，如果面面俱到包含所有功能的话，那么软件可能会做得体积特别大，加载运行特别慢。况且，任何一款软件都不可能做到面面俱到，符合每一个人的口味，特别是程序员，操不同语言的程序员需要的工具不同，就算是操相同语言的程序员，他们所偏好的东西也大相径庭。</p><p>所以Atom采用了<code>Package</code>的方式来满足不同的需求，任何功能都可以用“包”（或者我们称它为“插件”）的方式来安装，比如Atom的文件列表就是通过一个叫<code>tree-view</code>的插件实现的。Atom默认安装了80个核心插件用于满足基本需要（版本是1.28.0），除了文件树、标签等编辑器框架，还包含了33种流行的计算机语言着色插件和Git，其实已经有所冗余。</p><img src="/blog/assets/img/core-packages.d6578ada.png" alt="核心插件"><p>其他个性化的插件可以在Atom的社区中下载安装，访问<a href="https://atom.io/packages" target="_blank" rel="noopener noreferrer">https://atom.io/packages</a>，输入关键字搜索出到众多第三方插件，点击进入可以查看每一个插件的介绍、GitHub地址、版本更迭、bugs列表和授权方式。Atom内置了一个类似<code>npm</code>的命令行工具<code>apm</code>，在社区中找到自己心仪的插件之后，只需要运行<code>apm install [package]</code>即可将插件安装到Atom中去。当然Atom也提供了更快的安装方式，在设置中心Install板块中搜索社区提供的插件，得到结果后，只需要动动手指点击“安装”按钮就可以将插件下载安装到本地了。</p><p>第三方插件允许自由安装、配置、删除、启用、停用，而核心插件不允许删除，只允许配置、停用和启用。</p><h5 id="插件推荐"><a href="#插件推荐" aria-hidden="true" class="header-anchor">#</a> 插件推荐</h5><p>由于插件的获取太简单了，所以诸如语言支持这一类的插件就不赘述，这里推荐几款我觉着对前端特别实用的插件。</p><ol><li><p><a href="https://atom.io/packages/regex-railroad-diagram" target="_blank" rel="noopener noreferrer">regex-railroad-diagram</a></p><p>实时正则表达式图表，光标到达之处如果存在正则表达式，则会在表机器下方渲染出正则表达式匹配路线图。</p><img src="/blog/assets/img/regex-railroad-diagram.43c36b54.png" alt="regex-railroad-diagram"></li><li><p><a href="https://atom.io/packages/color-picker" target="_blank" rel="noopener noreferrer">color-picker</a></p><p>颜色选择器，样式编写必备。支持<code>HEX</code>，<code>HEXa</code>，<code>RGB</code>，<code>RGBa</code>，<code>HSL</code>，<code>HSLa</code>，<code>HSV</code>，<code>HSVa</code>，<code>VEC3</code>和<code>VEC4</code>格式，支持<code>sass</code>和<code>less</code>颜色变量。</p><img src="/blog/assets/img/color-picker.00f31d88.gif" alt="color-picker"></li><li><p><a href="https://atom.io/packages/minimap" target="_blank" rel="noopener noreferrer">minimap</a></p><p>代码块预览，类似Sublime Text 3 <code>minimap</code>的功能。</p><img src="/blog/assets/img/minimap.df2fae68.png" alt="minimap"></li></ol></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
         ← <a href="/blog/tech-articles/brainfuck/" class="prev">
           BrainFuck解释器
         </a></span><span class="next"><a href="/blog/tech-articles/playground/">
           Yangholmes 的小作品
         </a> →
       </span></p></div></div></div></div>
-    <script src="/blog/assets/js/2.f6eb54fe.js" defer></script><script src="/blog/assets/js/app.c9235b26.js" defer></script>
+    <script src="/blog/assets/js/2.d11d4b14.js" defer></script><script src="/blog/assets/js/app.c9e7c8fb.js" defer></script>
   </body>
 </html>
