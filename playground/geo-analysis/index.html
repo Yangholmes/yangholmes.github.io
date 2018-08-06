@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>地理位置信息查询</title>
+    <meta name="description" content="geo">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="icon" href="./assets/img/icon.png">
+    <link rel="stylesheet" href="../../assets/style/css/global.css">
+    <link rel="stylesheet" href="../../assets/style/css/fonts.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <!-- injection -->
+    <main id="geo">
+        <bdmap @map-init="onMapInit"></bdmap>
+        <addrcor :map="map" @add-marker="addMarker"></addrcor>
+        <coraddr :map="map" @add-marker="addMarker"></coraddr>
+    </main>
+    <!-- injection -->
+
+    <!-- templates -->
+    <template id="bd-map">
+        <div class="bd-map">
+            <div :id="id"></div>
+        </div>
+    </template>
+
+    <template id="addr-cor">
+        <div class="addr-cor">
+            <div class="addr-in">
+                <textarea placeholder="请输入地址，以空格区分" v-model="addrs"></textarea>
+                <div class="btn launch" @click="onAddr2Cor">转换</div>
+            </div>
+            <div class="cor-out">
+                <ul>
+                    <li v-for="(cor, index) in cors" :key="index">{{cor}}</li>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <template id="cor-addr">
+        <div class="cor-addr">
+            <div class="cor-in">
+                <textarea placeholder="请输入坐标，以空格区分" v-model="cors"></textarea>
+                <div class="btn launch" @click="onCor2Addr">转换</div>
+            </div>
+            <div class="addr-out">
+                <ul>
+                    <li v-for="(addr, index) in addrs" :key="index">{{addr}}</li>
+                </ul>
+            </div>
+        </div>
+    </template>
+    <!-- templates -->
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=360jMGxA9rM1amVod1hRv8H4BhEjKGVU"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>

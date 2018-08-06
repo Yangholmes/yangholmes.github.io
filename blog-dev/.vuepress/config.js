@@ -27,8 +27,8 @@ module.exports = {
                     'hello-vue-extends/',
                     'brainfuck/',
                     'why-atom/',
-                    'playground/',
-                    'my-code-style/'
+                    'my-code-style/',
+                    'playground/'
                 ]
             }]
         }

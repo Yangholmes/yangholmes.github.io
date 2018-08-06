@@ -6,7 +6,6 @@
 const gulp = require('gulp');
 const less = require('gulp-less');
 const babel = require('gulp-babel');
-const browserify = require('browserify');
 
 // 默认服务
 gulp.task('default', ['goLess', 'goBabel'], function () {

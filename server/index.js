@@ -6,7 +6,7 @@
 const express = require('express');
 const app = express();
 
-app.use(express.static('./'));
+app.use(express.static('../'));
 
 let server = app.listen(8080, function () {
     let host = server.address().address;
