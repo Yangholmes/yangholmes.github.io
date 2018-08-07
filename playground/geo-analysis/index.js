@@ -52,12 +52,11 @@ let addrcor = {
     },
     methods: {
         onAddr2Cor() {
-            let addArr = this.addrs.split('\n');
+            let addrArr = this.addrs.split('\n');
             this.cors = [];
             this.map.clearOverlays(); // 清空覆盖物
-            addArr.forEach(e => {
+            addrArr.forEach(e => {
                 this.geo.getPoint(e, point => {
-                    console.log(point);
                     point && this.cors.push(point.lng + ', ' + point.lat);
                     this.$emit('add-marker', point);
                 });
@@ -70,14 +69,31 @@ let addrcor = {
 let coraddr = {
     template: '#cor-addr',
     props: ['map'],
+    computed: {
+        geo() {
+            return new BMap.Geocoder();
+        }
+    },
     data() {
         return {
             cors: '',
-            addrs: ''
+            addrs: []
         };
     },
     methods: {
-        onCor2Addr() {}
+        onCor2Addr() {
+            let corArr = this.cors.split('\n');
+            this.addrs = [];
+            this.map.clearOverlays(); // 清空覆盖物
+            corArr.forEach(e => {
+                let point = e.split(',');
+                this.geo.getLocation(new BMap.Point(point[0], point[1]), location => {
+                    console.log(location);
+                    location && this.addrs.push(location.address);
+                    this.$emit('add-marker', {lng: point[0], lat: point[1]});
+                });
+            });
+        }
     }
 };
 

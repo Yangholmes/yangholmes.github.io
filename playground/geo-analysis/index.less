@@ -4,6 +4,7 @@
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50% 50%;
     grid-template-areas: "a b"
                          "a c";
     .bd-map {
@@ -26,6 +27,7 @@
         justify-content: space-between;
         & > div {
             width: 49%;
+            height: 100%;
         }
         textarea {
             width: 100%;
@@ -42,6 +44,7 @@
             padding: 0;
             list-style: none;
             border: 1px solid #aaa;
+            font-size: .85em;
         }
     }
 

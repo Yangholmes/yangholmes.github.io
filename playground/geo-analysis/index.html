@@ -31,7 +31,7 @@
     <template id="addr-cor">
         <div class="addr-cor">
             <div class="addr-in">
-                <textarea placeholder="请输入地址，以空格区分" v-model="addrs"></textarea>
+                <textarea placeholder="请输入地址，以空行区分" v-model="addrs"></textarea>
                 <div class="btn launch" @click="onAddr2Cor">转换</div>
             </div>
             <div class="cor-out">
@@ -45,7 +45,7 @@
     <template id="cor-addr">
         <div class="cor-addr">
             <div class="cor-in">
-                <textarea placeholder="请输入坐标，以空格区分" v-model="cors"></textarea>
+                <textarea placeholder="请输入坐标，以空行区分" v-model="cors"></textarea>
                 <div class="btn launch" @click="onCor2Addr">转换</div>
             </div>
             <div class="addr-out">
