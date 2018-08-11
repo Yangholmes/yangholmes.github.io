@@ -57,7 +57,7 @@ let addrcor = {
             this.map.clearOverlays(); // 清空覆盖物
             addrArr.forEach(e => {
                 this.geo.getPoint(e, point => {
-                    point && this.cors.push(point.lng + ', ' + point.lat);
+                    point && this.cors.push(e + ': ' + point.lng + ', ' + point.lat);
                     this.$emit('add-marker', point);
                 });
             });
@@ -89,7 +89,7 @@ let coraddr = {
                 let point = e.split(',');
                 this.geo.getLocation(new BMap.Point(point[0], point[1]), location => {
                     console.log(location);
-                    location && this.addrs.push(location.address);
+                    location && this.addrs.push(location.address + ': ' + e );
                     this.$emit('add-marker', {lng: point[0], lat: point[1]});
                 });
             });
