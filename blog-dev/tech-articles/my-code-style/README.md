@@ -58,7 +58,7 @@ println(   "++++++++++"+temp+"==========");
 
 `FECS`是一套非常详细的代码规范，支持`html`、`css`、`less`和`JavaScript`四种格式检查。`FECS`定制了一套`ESLint`规范，结合了百度自定义的部分`JavaScript`编码规范（自定义规范用前缀`fecs-`区分），以检查代码中可能存在的质量问题。规范涵盖了众多场景，例如标签的规范、变量名命名规范、行尾逗号分号规范、缩进规范等等。
 
-同时`FECS`也是基于`Node.js`的前端代码检查/修复工具，提供`Sublime Text`、`Atom`、`VS Code`等现代编辑器插件，支持`Gulp`、`Grunt`等构建化工具插件（好像还没有`webpack`插件）。其中`html`检查/格式化是基于`htmlcs`工具，`css`检查是基于`csshint`工具，`less`检查是基于`lesslint`工具，`JavaScript`修复是基于`jformatter`工具。修复功能其实就是代码美化，开发人员会更加随意地去编写代码，因为美化功能总能让提交通过机器评审。所以在实际使用中，我更倾向于代码风格检测，而不是修复，因为对于一个程序员来说，养成良好的习惯优于利用工具纠正错误。
+同时`FECS`也是基于`Node.js`的前端代码检查/修复工具，提供`Sublime Text`、`Atom`、`Visual Studio Code`等现代编辑器插件，支持`Gulp`、`Grunt`等构建化工具插件（好像还没有`webpack`插件）。其中`html`检查/格式化是基于`htmlcs`工具，`css`检查是基于`csshint`工具，`less`检查是基于`lesslint`工具，`JavaScript`修复是基于`jformatter`工具。修复功能其实就是代码美化，开发人员会更加随意地去编写代码，因为美化功能总能让提交通过机器评审。所以在实际使用中，我更倾向于代码风格检测，而不是修复，因为对于一个程序员来说，养成良好的习惯优于利用工具纠正错误。
 
 文件内对于压缩过的脚本或者样式，我们可以添加`/* eslint-disable */`来跳过检测。另外icode的机器评审对于代码风格的限制提供了“豁免/标记误报”功能，对于单次提交的少量风格问题，是可以进行豁免操作的。但在项目中我发现有不少同事都会滥用“豁免/标记误报”功能，而且还开发了批量豁免的浏览器扩展😂。简直是道高一尺魔高一丈。
 
@@ -69,4 +69,35 @@ println(   "++++++++++"+temp+"==========");
 
 市面上很多大厂现在都在使用`ESLint`规范自家前端的编码，比如百度、Airbnb，一些流行的框架脚手架也是用`ESLint`做代码规范，比如`Vue.js`。普及率还是很高的，对于个人开发者或者小团队，可以直接采用这些大厂和大社区的代码规范。当然，你也可以选择自己开发一套规则。
 
+`ESLint`的使用方法可以参照官网的[Getting Start](https://eslint.org/docs/user-guide/getting-started)，要注意`ESLint`依赖`Node.js`和`npm`，在使用之前应该先安装好相应版本的`Node.js`环境。
+
+在项目根目录下创建`.eslintrc.js`文件（或者使用`ESLint`指令`eslint --init`创建），用于设置编写规则。`.eslintrc.js`文件是一个标准的`JavaScript`脚本，也就是说，`.eslintrc.js`也需要严格按照自己指定的风格编写。规则编写是在`rules`对象中，格式是这样子的：
+
+```JavaScript
+    rules: {
+        rulesname: [errorlevel, options]
+    }
+```
+
+错误等级有三种，分别是`off`、`warn`和`error`，也可以用数字`0`、`1`和`2`标记。
+
+> `off` 或者 `0`：关闭这条规则，不警告也不报错
+>
+> `warn` 或者 `1`：开启这条规则，只警告不报错
+>
+> `error` 或者 `2`：开启这条规则，违反这条规则将报错
+
+在`.eslintrc.js`中指定
+
+```JavaScript
+    'extends': 'eslint:recommended'
+```
+
+便可使用`ESlint`默认的规则项配置；你也可以在`npm`的社区中搜索[eslint-congfig](https://www.npmjs.com/search?q=eslint-config)，可以找到许多“第三方”的规则配置，例如百度的`FECS`或者Airbnb的前端规范。
+
 #### 我的代码风格手册
+百度的`FECS`还是很不错的，但是对于`html`的限制，在当前组件化设计的浪潮中，显得过于严格，例如对自定义组件属性命名的限制，在各种前端框架中，驼峰应该是最佳实践，但是`FECS`却非得限制在‘-’分隔命名；`<button>`标签必须指定类型等。适用情景过于古老了。
+
+在`FECS`的基础上，我修改了一版自己的代码风格，主要限制了`JavaScript`的编码规范，对`html`和`css`宽松，更加适合现如今组件化的设计潮流。
+
+[我的代码风格手册](https://github.com/Yangholmes/yangholmes.github.io/blob/master/.eslintrc.js)
