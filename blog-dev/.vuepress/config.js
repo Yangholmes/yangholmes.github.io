@@ -28,6 +28,7 @@ module.exports = {
                     'brainfuck/',
                     'why-atom/',
                     'my-code-style/',
+                    'deboumce-throttle/',
                     'playground/'
                 ]
             }]
