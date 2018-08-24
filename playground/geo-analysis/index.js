@@ -10,29 +10,61 @@
  */
 
 // 地图模块
-let bdmap = {
-    template: '#bd-map',
-    data() {
-        return {
-            id: 'bd-map-' + (Math.random() * 10000).toFixed(0),
-            map: {}
-        };
-    },
-    mounted() {
-        this.init();
-        this.jet();
-    },
-    methods: {
-        init() {
-            let map = new BMap.Map(this.id);
-            map.centerAndZoom(new BMap.Point(116.630076, 23.661812), 9);
-            map.enableScrollWheelZoom(true);
-            this.map = map;
-        },
-        jet() {
-            this.$emit('map-init', this.map);
-        }
-    }
+// let bdmap = {
+//     template: '#bd-map',
+//     data() {
+//         return {
+//             id: 'bd-map-' + (Math.random() * 10000).toFixed(0),
+//             map: {}
+//         };
+//     },
+//     mounted() {
+//         this.init();
+//         this.jet();
+//     },
+//     methods: {
+//         init() {
+//             let map = new BMap.Map(this.id);
+//             map.centerAndZoom(new BMap.Point(116.630076, 23.661812), 9);
+//             map.enableScrollWheelZoom(true);
+//             this.map = map;
+//         },
+//         jet() {
+//             this.$emit('map-init', this.map);
+//         }
+//     }
+// };
+// 异步组件 -- 地图模块
+// 这里完全没有必要这么写，只是为了测试异步组件的用法
+let bdmap = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({
+                template: '#bd-map',
+                data() {
+                    return {
+                        id: 'bd-map-' + (Math.random() * 10000).toFixed(0),
+                        map: {}
+                    };
+                },
+                mounted() {
+                    this.init();
+                    this.jet();
+                },
+                methods: {
+                    init() {
+                        let map = new BMap.Map(this.id);
+                        map.centerAndZoom(new BMap.Point(116.630076, 23.661812), 9);
+                        map.enableScrollWheelZoom(true);
+                        this.map = map;
+                    },
+                    jet() {
+                        this.$emit('map-init', this.map);
+                    }
+                }
+            });
+        }, 0);
+    });
 };
 
 // 地址-位置模块
