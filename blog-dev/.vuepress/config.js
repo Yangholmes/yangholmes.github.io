@@ -31,6 +31,18 @@ module.exports = {
                     'debounce-throttle/',
                     'playground/'
                 ]
+            }],
+            '/arm-linux/': [{
+                title: '小派的折腾日记',
+                collapsable: true,
+                children: [
+                    // 'how-to-modify-img/',
+                    // 'use-vim/',
+                    // 'how-to-use-ssh/',
+                    // 'how-to-use-gpio-in-node/',
+                    'how-gcc-works/',
+                    'c-main-function/'
+                ]
             }]
         }
     }
