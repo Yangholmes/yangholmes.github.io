@@ -8,6 +8,9 @@ module.exports = {
             href: 'http://yangholmes.github.io/assets/img/icon.png'
         }]
     ],
+    markdown: {
+        lineNumbers: true
+    },
     themeConfig: {
         logo: 'http://yangholmes.github.io/assets/img/yangholmes.jpg',
         lastUpdated: 'Last Updated',
@@ -15,9 +18,13 @@ module.exports = {
             text: '技术小文章',
             link: '/tech-articles/'
         }, {
-            text: '我的简历',
-            link: 'http://yangholmes.github.io/playground/resume/'
+            text: '小派的折腾日记',
+            link: '/arm-linux/'
         }],
+        //  {
+        //     text: '我的简历',
+        //     link: 'http://yangholmes.github.io/playground/resume/'
+        // }],
         sidebar: {
             '/tech-articles/': [{
                 title: '技术小文章',
@@ -36,10 +43,11 @@ module.exports = {
                 title: '小派的折腾日记',
                 collapsable: true,
                 children: [
-                    // 'how-to-modify-img/',
+                    // 'how-to-modify-img-mirror/',
                     // 'use-vim/',
                     // 'how-to-use-ssh/',
                     // 'how-to-use-gpio-in-node/',
+                    // 'access-permissions/',
                     'how-gcc-works/',
                     'c-main-function/'
                 ]
