@@ -134,12 +134,11 @@ exit_group(0)                           = ?
 
 ```c
 int execve(const char* path, char* const argv[], char* const envp[]);
-
-int execl(const char* path, const char* arg, ...);
-int execle(const char* path, const char* arg, ..., char* const envp[]);
-int execlp(const char* file, const char* arg, ...);
 int execv(const char* path, char* const argv[]);
 int execvp(const char* file, char* const argv[]);
+int execle(const char* path, const char* arg, ..., char* const envp[]);
+int execl(const char* path, const char* arg, ...);
+int execlp(const char* file, const char* arg, ...);
 ```
 
 看起来比较复杂，但实际上只有 `execve()` 函数是真正的系统调用，其他的函数都是从 `execve()` 函数演化而来的。`execve()` 函数是一个系统调用，作用是执行指定的可执行文件，用可执行文件的内容取代调用 `execve()` 函数进程的内容。简单地讲，新的可执行文件覆盖了当前正在运行的程序，最终的结果就是创建了新的进程。
