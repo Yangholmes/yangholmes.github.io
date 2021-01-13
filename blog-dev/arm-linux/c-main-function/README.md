@@ -15,3 +15,79 @@ ANSI 规定 `main()` 函数只有前两个参数，而 POSIX 则使用了一个�
 
 #### 系统如何执行 `main()` 函数
 
+用 strace 来分析 `main()` 的执行。我们先写一段测试用的程序：
+
+```c
+#include <stdio.h>
+
+int main(int argc, char* argv[], char* envp[]) {
+    int i = 0;
+    for (i = 0; i < argc; i++) {
+        printf("Argument %d is %s.\n", i, argv[i]);
+    }
+    return 0;
+}
+
+```
+
+接下来编译链接：
+
+```bash
+$ gcc -o main mian.c
+```
+
+得到可执行文件 main ，然后运行它
+
+```bash
+$ ./main 'arg1' "arg2" arg3
+Argument 0 is ./main.
+Argument 1 is arg1.
+Argument 2 is arg2.
+Argument 3 is arg3.
+```
+
+程序运行正确。接下来用 strace 查看系统调用情况：
+
+```bash
+$ strace ./main 'arg1' "arg2" arg3
+execve("./main", ["./main", "arg1", "arg2", "arg3"], 0x7fd6828c78 /* 32 vars */) = 0
+brk(NULL)                               = 0x558ddaf000
+faccessat(AT_FDCWD, "/etc/ld.so.nohwcap", F_OK) = -1 ENOENT (No such file or directory)
+faccessat(AT_FDCWD, "/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=89739, ...}) = 0
+mmap(NULL, 89739, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f81dba000
+close(3)                                = 0
+faccessat(AT_FDCWD, "/etc/ld.so.nohwcap", F_OK) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0 \10\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1341080, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f81df8000
+mmap(NULL, 1409880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f81c61000
+mprotect(0x7f81da1000, 61440, PROT_NONE) = 0
+mmap(0x7f81db0000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x13f000) = 0x7f81db0000
+mmap(0x7f81db6000, 13144, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f81db6000
+close(3)                                = 0
+mprotect(0x7f81db0000, 16384, PROT_READ) = 0
+mprotect(0x5585a3f000, 4096, PROT_READ) = 0
+mprotect(0x7f81dfc000, 4096, PROT_READ) = 0
+munmap(0x7f81dba000, 89739)             = 0
+fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+brk(NULL)                               = 0x558ddaf000
+brk(0x558ddd0000)                       = 0x558ddd0000
+write(1, "Argument 0 is ./main.\n", 22Argument 0 is ./main.
+) = 22
+write(1, "Argument 1 is arg1.\n", 20Argument 1 is arg1.
+)   = 20
+write(1, "Argument 2 is arg2.\n", 20Argument 2 is arg2.
+)   = 20
+write(1, "Argument 3 is arg3.\n", 20Argument 3 is arg3.
+)   = 20
+exit_group(0)                           = ?
++++ exited with 0 +++
+```
+
+
+运行程序，系统将会从 `mian()` 函数开始执行，执行系统调用 `execve()` 函数为程序开辟新的进程。执行 `execve()` 函数的时候，系统将执行 `./main` 命令中的所有参数以字符串指针的方式传递给了 `execve()` 。执行参数包含可执行文件自身，所以我们可以看到 argv 的长度为4。
+
+了解系统调用 `execve()` 函数可以查看[这篇](../how-gcc-works/)了解
