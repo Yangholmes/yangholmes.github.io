@@ -36,7 +36,8 @@ module.exports = {
                     'why-atom/',
                     'my-code-style/',
                     'debounce-throttle/',
-                    'playground/'
+                    'playground/',
+                    '__proto__/'
                 ]
             }],
             '/arm-linux/': [{
