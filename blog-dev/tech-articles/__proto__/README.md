@@ -18,21 +18,21 @@
 
 执行代码
 
-```JavaScript
+```javascript
 console.log(String);
 console.log(String.prototype);
 ```
 
 可以得到类似的输出
 
-```JavaScript
+```javascript
 ƒ String() { [native code] }
 String {"", constructor: ƒ, anchor: ƒ, big: ƒ, blink: ƒ, …}
 ```
 
 \[2\]：继续看字符串的例子
 
-```JavaScript
+```javascript
 let str = new String('str');
 console.log(str);
 console.log(Object.getPrototypeOf(str));
@@ -41,7 +41,7 @@ console.log(Object.getPrototypeOf(str) === String.prototype);
 
 可以得到类似的输出
 
-```JavaScript
+```javascript
 String {"str"}
 String {"", constructor: ƒ, anchor: ƒ, big: ƒ, blink: ƒ, …}
 true
@@ -49,10 +49,10 @@ true
 
 \[3\]：直接访问一下 `Object` 原型对象的原型
 
-```JavaScript
+```javascript
 console.log(Object.getPrototypeOf(Object.prototype));
 ```
 
-```JavaScript
+```javascript
 null
 ```
