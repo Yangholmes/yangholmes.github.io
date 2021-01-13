@@ -10,5 +10,5 @@
 6. [Quill插件——剪贴板图片粘贴插件](https://github.com/Yangholmes/quill-yang-image-paste)
 7. 送给女朋友的礼物 (此项不放链接😎)
 8. ~~<a target="_blank" href="../../../playground/geo-analysis/">地理位置信息查询</a>~~ Baidu Map token 失效了
-9. [日常开发的一些常用的组件](/playground/components/)
+9. [日常开发的一些常用的组件](/../playground/components/)
 9. tbc...
