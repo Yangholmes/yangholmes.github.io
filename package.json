@@ -31,7 +31,7 @@
         "nodemon": "^1.19.4"
     },
     "devDependencies": {
-        "gulp": "^3.9.1",
+        "gulp": "^4.0.2",
         "gulp-stylus": "^2.7.0",
         "vuepress": "^0.8.4"
     }
