@@ -33,6 +33,6 @@
     "devDependencies": {
         "gulp": "^3.9.1",
         "gulp-stylus": "^2.7.0",
-        "vuepress": "^0.8.4"
+        "vuepress": "^1.9.7"
     }
 }
