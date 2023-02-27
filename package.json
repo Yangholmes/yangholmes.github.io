@@ -27,7 +27,7 @@
     "homepage": "https://github.com/Yangholmes/yangholmes.github.io#readme",
     "dependencies": {
         "express": "^4.17.1",
-        "forever": "^0.15.3",
+        "forever": "^4.0.3",
         "nodemon": "^1.19.4"
     },
     "devDependencies": {
