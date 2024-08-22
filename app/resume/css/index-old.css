@@ -1,0 +1,190 @@
+@CHARSET "UTF-8";
+
+/*清除默认样式(start)*/
+ul,li,p,h1{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+/*清除默认样式(end)*/
+
+/*导入字体(start)*/
+@font-face{
+    font-family: raleway;
+    src: url('../fonts/raleway/Raleway-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'raleway';
+    src: url('../fonts/raleway/Raleway-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'raleway';
+    src: url('../fonts/raleway/Raleway-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+/*导入字体(end)*/
+
+body{
+    font-size: 100%;
+    color: rgb(60, 60, 60);
+    margin: 0;
+    padding: 0;
+    background: rgb(255, 255, 255);
+    width: 100%; height: 100%;
+}
+
+a{text-decoration:none; }
+a:link{color:rgb(60, 60, 60); }
+a:visited{color:rgb(60, 60, 60); }
+a:hover{color:rgb(0, 0, 0); }
+a:active{color:rgb(60, 60, 60); }
+
+header, footer{
+    background: rgb(240, 240, 240);
+    width: auto;
+    /*min-width: 1280px;*/
+}
+
+header{
+    height: 80px;
+    font-size: 1.125em;
+}
+
+.head-content{
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.head-content ul{
+    height: 80px;
+    line-height: 80px;
+    overflow: hidden;
+}
+
+nav{
+    float: left;
+    font-family: 'raleway', sans-serif;
+    font-weight: 400;
+}
+
+nav li{
+    margin-right: 2.5em;
+}
+
+header .socialSite{
+    float: right;
+}
+
+.head-content li,
+footer li{
+    display: inline;
+}
+
+.resume-main{
+    width: auto;
+    /*min-width: 1280px;*/
+}
+
+.gallery{
+    width: auto;
+    /*min-width: 1280px;*/
+    height: 300px;
+    background: url(../img/gallery-background.png);
+    background-size: cover;
+}
+
+.gallery .picsName{
+    width: 640px;
+    height: 150px;
+    margin: 0 auto;
+    padding: 75px 0;
+}
+
+.gallery .pics{
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: url(../img/yangholmes.png);
+    background-position: center;
+    background-size: 150px 150px;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.gallery .myName{
+    float: right;
+}
+
+main{
+    width: 960px;
+    margin: 0 auto;
+    font-family: 'raleway', sans-serif;
+    font-weight: 400;
+    font-size: 1.25em;
+    line-height: 1.875em;
+}
+main article{
+    margin-top: 5em;
+}
+
+main article:last-child{
+    margin-bottom: 5em;
+}
+
+main h1{
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 2.5rem;/*rem是依body的字体进行缩放*/
+}
+
+main .tip{
+    font-weight: 500;
+    font-size: 1.25em;
+}
+
+main .point{
+    font-weight:600;
+    font-size: 1.5625em;
+    line-height: 2.34375em;
+}
+
+footer{
+    height: 260px;
+}
+
+footer .Myname{
+    width: 288px;
+    margin: 0 auto;
+    padding: 69.5px 0;
+}
+
+footer img{
+    margin-bottom: 40px;
+}
+
+footer .socialSite{
+    font-size: 1.5625em;
+    width: 288px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+footer .socialSite a{
+    padding: 0 20px;
+}
+
+/* 响应式 */
+@media only screen and (min-width: 320px){
+    header{
+        position: fixed;
+        height: 10%;
+        left: 0; bottom: 0;
+    }
+}
+@media only screen and (min-width: 768px){}
+@media only screen and (min-width: 1280px){}

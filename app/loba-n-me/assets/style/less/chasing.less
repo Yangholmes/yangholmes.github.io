@@ -1,0 +1,44 @@
+@import "./global.less";
+.touch {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0);
+    display: block;
+    .touch-panel {
+        display: inline-block;
+        width: 49%;
+        height: 49%;
+    }
+}
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    background: url(../../img/move-heart.svg) center;
+    background-size: 100%;
+    p {
+        margin: 0;
+        line-height: 1.5;
+        font-size: 1em;
+        font-weight: 600;
+        color: #fff;
+    }
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(102, 102, 102, .7);
+}

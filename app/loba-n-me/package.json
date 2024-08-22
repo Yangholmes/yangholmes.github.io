@@ -1,0 +1,23 @@
+{
+  "name": "svg",
+  "version": "0.0.1",
+  "description": "I Love Lazy Loba",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browserify": "^16.2.0",
+    "globby": "^8.0.1",
+    "gulp": "^3.9.1",
+    "gulp-less": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.2",
+    "babel-preset-env": "^1.6.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-js-import": "^1.0.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yangholmes",
+  "license": "ISC"
+}
