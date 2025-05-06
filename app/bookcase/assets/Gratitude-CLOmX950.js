@@ -1,2 +1,0 @@
-import{d as e,c as t,e as o,F as a,b as s}from"./index-0Mlx3S5e.js";const r=""+new URL("svgrepo-logo-7ptZdwlz.svg",import.meta.url).href,l=e({name:"SvgRepo",setup(){return()=>t(a,null,[o("Vectors and icons by"),t("a",{href:"https://www.svgrepo.com",target:"_blank"},[t("img",{src:r,alt:"SVG Repo"},null)])])}}),n="_gratitude_1pz0x_1",u={gratitude:n},g=t("ul",{class:s(u.gratitude)},[t("li",null,[t(l,null,null)])]);export{g as default};
-//# sourceMappingURL=Gratitude-CLOmX950.js.map
