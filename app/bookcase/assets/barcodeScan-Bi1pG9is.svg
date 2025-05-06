@@ -1,0 +1,23 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <!-- 全幅比例条码 (宽高比19.23:14) -->
+    <g transform="translate(0 15)">
+        <rect x="0"  width="9"  height="35" rx="3" ry="3" fill="#444"/>
+        <rect x="14" width="5"  height="35" rx="2" ry="2" fill="#444"/>
+        <rect x="25" width="11" height="35" rx="3" ry="3" fill="#444"/>
+        <rect x="41" width="7"  height="35" rx="2" ry="2" fill="#444"/>
+        <rect x="53" width="11" height="35" rx="3" ry="3" fill="#444"/>
+    </g>
+
+    <!-- 自适应扫描线 -->
+    <rect width="64" height="4" fill="#FF0505" opacity="1">
+        <animate attributeName="y"
+                 values="18;46;18"
+                 keyTimes="0;0.5;1"
+                 dur="2.0s"
+                 repeatCount="indefinite"/>
+        <animate attributeName="opacity"
+                 values="0.2;1.0;0.2;1.0;0.2"
+                 dur="2.0s"
+                 repeatCount="indefinite"/>
+    </rect>
+</svg>

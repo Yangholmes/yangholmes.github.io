@@ -1,0 +1,114 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+
+  <rect id="leftSquare"
+        class="square"
+        x="6"
+        y="19"
+        width="26"
+        height="26"
+        fill="#a64f3c"
+        stroke="black"
+        stroke-width="2"
+        rx="3" ry="3"
+  >
+    <animate attributeName="x"
+             values="6; 6; 2; 2"
+             keyTimes="0; 0.4; 0.7; 1"
+             dur="2.5s"
+             repeatCount="indefinite" />
+    <animate attributeName="stroke-width"
+             values="0; 0; 2; 2; 2"
+             keyTimes="0; 0.4; 0.41; 0.7; 1"
+      dur="2.5s"
+      repeatCount="indefinite"
+    />
+  </rect>
+
+<!-- 向左箭头 -->
+  <path
+    d="M30 32 L17 32
+        M22 29 L17 32
+        M22 35 L17 32"
+    stroke="black"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+>
+<!-- X轴平移动画 -->
+    <animateTransform
+        attributeName="transform"
+        type="translate"
+        values="0,0; 0.0; -4,0; -4,0"
+        keyTimes="0; 0.4; 0.7; 1"
+        dur="2.5s"
+        repeatCount="indefinite"
+        additive="sum"/>
+</path>
+
+  <rect id="rightSquare"
+        class="square"
+        x="32"
+        y="19"
+        width="26"
+        height="26"
+        fill="#a64f3c"
+        stroke="black"
+        stroke-width="2"
+        rx="3" ry="3"
+  >
+    <animate attributeName="x"
+             values="32; 32; 36; 36"
+             keyTimes="0; 0.4; 0.7; 1"
+             dur="2.5s"
+             repeatCount="indefinite" />
+    <animate attributeName="stroke-width"
+             values="0; 0; 2; 2; 2"
+             keyTimes="0; 0.4; 0.41; 0.7; 1"
+      dur="2.5s"
+      repeatCount="indefinite"
+    />
+  </rect>
+
+  <!-- 向右箭头 -->
+<path
+    d="M34 32 L47 32
+        M42 29 L47 32
+        M42 35 L47 32"
+    stroke="black"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+>
+<!-- X轴平移动画 -->
+    <animateTransform
+        attributeName="transform"
+        type="translate"
+        values="0,0; 0.0; 4,0; 4,0"
+        keyTimes="0; 0.4; 0.7; 1"
+        dur="2.5s"
+        repeatCount="indefinite"
+        additive="sum"/>
+</path>
+
+  <rect id="frame"
+        x="6"
+        y="19"
+        width="52"
+        height="26"
+        fill="#a64f3c"
+        stroke="black"
+        stroke-width="2"
+        rx="3" ry="3"
+        opacity="0"
+  >
+    <animate attributeName="opacity"
+             values="1; 1; 0; 0; 0"
+             keyTimes="0; 0.4; 0.41; 0.61; 1"
+      dur="2.5s"
+      repeatCount="indefinite"
+    />
+  </rect>
+
+</svg>

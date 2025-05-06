@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+    <!-- 基础柜体 -->
+    <rect x="12" y="12" width="40" height="40" rx="3" fill="#E0A87E" stroke="#8B5E3C" stroke-width="1.5"/>
+
+    <!-- 左侧柜门 -->
+    <g>
+      <animateTransform
+        attributeName="transform"
+        attributeType="XML"
+        type="translate"
+        values="0 0; -5 0; 0 0"
+        keyTimes="0; 0.5; 1"
+        dur="2s"
+        repeatCount="indefinite"
+      />
+      <rect x="12" y="12" width="20" height="40" rx="3" fill="#D0986A" stroke="#8B5E3C" stroke-width="1.5">
+      </rect>
+      <circle cx="24" cy="32" r="3" fill="#FFD700" stroke="#8B5E3C" stroke-width="1.2"/>
+    </g>
+
+    <!-- 右侧柜门 -->
+    <g>
+      <animateTransform
+        attributeName="transform"
+        attributeType="XML"
+        type="translate"
+        values="0 0; 5 0; 0 0"
+        keyTimes="0; 0.5; 1"
+        dur="2s"
+        repeatCount="indefinite"
+      />
+      <rect x="32" y="12" width="20" height="40" rx="3" fill="#D0986A" stroke="#8B5E3C" stroke-width="1.5">
+      </rect>
+      <circle cx="40" cy="32" r="3" fill="#FFD700" stroke="#8B5E3C" stroke-width="1.2"/>
+    </g>
+
+</svg>
