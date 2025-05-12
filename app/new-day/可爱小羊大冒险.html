@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>可爱小羊跑酷-终极版</title>
+    <style>
+        canvas {
+            border: 3px solid #6b5b4a;
+            background: linear-gradient(#87CEEB, #B0E0E6);
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f0e4d8;
+            color: #5c463e;
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive;
+        }
+        #restartBtn {
+            padding: 15px 30px;
+            margin: 20px;
+            display: none;
+            background: #FF6B6B;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        #restartBtn:hover {
+            transform: scale(1.05);
+            background: #FF5252;
+        }
+    </style>
+</head>
+<body>
+    <h2>🐑 可爱小羊大冒险 🎂</h2>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <button id="restartBtn" onclick="resetGame()">🔄 重新开始</button>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const restartBtn = document.getElementById('restartBtn');
+
+        // 游戏配置
+        const config = {
+            gravity: 0.6,
+            jumpForce: -18,
+            baseSpeed: 4,
+            minObstacleGap: 200,
+            sheep: { width: 64, height: 64 }
+        };
+
+        // 游戏状态
+        let gameState = {
+            sheep: { x: 100, y: 300, vy: 0, isJumping: false, frame: 0 },
+            obstacles: [],
+            score: 0,
+            gameActive: true,
+            clouds: [],
+            lastObstacleTime: 0,
+            isVictory: false
+        };
+
+        // 爱心特效系统
+        class Heart {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 50;
+                this.vx = (Math.random() - 0.5) * 3;
+                this.vy = -3 - Math.random() * 4;
+                this.size = 8 + Math.random() * 12;
+                this.rot = Math.random() * Math.PI * 2;
+                this.color = `hsl(${Math.random()*360}, 70%, 60%)`;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += 0.1;
+                this.rot += 0.05;
+                if(this.y > canvas.height + 50) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rot);
+                ctx.scale(0.8 + Math.abs(Math.sin(this.rot*2))*0.2, 1);
+                
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.bezierCurveTo(-this.size, -this.size*2, this.size*2, -this.size, 0, this.size);
+                ctx.bezierCurveTo(0, this.size, -this.size*2, -this.size, this.size, -this.size*2);
+                ctx.fill();
+                
+                ctx.restore();
+            }
+        }
+        let hearts = [];
+
+        // 颜色方案
+        const colors = {
+            ground: ['#7ec850', '#6ab040'],
+            sheep: {
+                body: '#FFFFFF',
+                face: '#FFD1DC',
+                eye: '#614f4f',
+                nose: '#FF8080',
+                horn: '#EED5B7',
+                hoof: '#EED5B7'
+            }
+        };
+
+        // 初始化云朵
+        function createClouds(count) {
+            return Array.from({length: count}, () => ({
+                x: Math.random() * canvas.width,
+                y: Math.random() * 150,
+                speed: 0.5 + Math.random() * 0.5
+            }));
+        }
+
+        // 绘制背景
+        function drawBackground() {
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, canvas.width, canvas.height-50);
+            
+            gameState.clouds.forEach(cloud => {
+                ctx.fillStyle = 'rgba(255,255,255,0.8)';
+                ctx.beginPath();
+                ctx.arc(cloud.x, cloud.y, 20, 0, Math.PI*2);
+                ctx.arc(cloud.x+15, cloud.y-10, 18, 0, Math.PI*2);
+                ctx.arc(cloud.x+30, cloud.y, 20, 0, Math.PI*2);
+                ctx.fill();
+                
+                cloud.x += cloud.speed;
+                if(cloud.x > canvas.width) cloud.x = -100;
+            });
+
+            ctx.fillStyle = colors.ground[0];
+            ctx.fillRect(0, canvas.height-50, canvas.width, 50);
+            ctx.fillStyle = colors.ground[1];
+            ctx.beginPath();
+            for(let x=0; x<canvas.width; x+=20){
+                ctx.rect(x, canvas.height-30 + Math.sin(x/40 + Date.now()/500)*5, 20, 30);
+            }
+            ctx.fill();
+        }
+
+        // 小羊造型（已移除轮廓方框）
+        function drawSheep(x, y) {
+            ctx.fillStyle = colors.sheep.body;
+            ctx.beginPath();
+            ctx.arc(x+32, y+32, 30, 0, Math.PI*2);
+            ctx.fill();
+            
+            ctx.fillStyle = colors.sheep.horn;
+            ctx.beginPath();
+            ctx.moveTo(x+15, y+15);
+            ctx.quadraticCurveTo(x+5, y-5, x+20, y-10);
+            ctx.quadraticCurveTo(x+30, y-5, x+25, y+15);
+            ctx.moveTo(x+50, y+15);
+            ctx.quadraticCurveTo(x+60, y-5, x+75, y-10);
+            ctx.quadraticCurveTo(x+85, y-5, x+80, y+15);
+            ctx.fill();
+
+            ctx.fillStyle = colors.sheep.face;
+            ctx.beginPath();
+            ctx.arc(x+32, y+25, 20, 0.2, Math.PI*1.8);
+            ctx.fill();
+
+            ctx.fillStyle = colors.sheep.eye;
+            ctx.beginPath();
+            ctx.arc(x+25, y+25, 6, 0, Math.PI*2);
+            ctx.arc(x+40, y+25, 6, 0, Math.PI*2);
+            ctx.fill();
+
+            ctx.fillStyle = colors.sheep.nose;
+            ctx.beginPath();
+            ctx.arc(x+32, y+35, 4, 0, Math.PI*2);
+            ctx.fill();
+
+            const legOffset = gameState.sheep.isJumping ? 0 : Math.sin(gameState.sheep.frame/5)*3;
+            const backLegY = y + 62;
+            const frontLegY = y + 55;
+            
+            ctx.fillStyle = colors.sheep.body;
+            ctx.beginPath();
+            ctx.roundRect(x+15, backLegY - legOffset, 15, 30, 8);
+            ctx.roundRect(x+75, backLegY + legOffset, 15, 30, 8);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.roundRect(x+35, frontLegY + legOffset, 15, 25, 6);
+            ctx.roundRect(x+55, frontLegY - legOffset, 15, 25, 6);
+            ctx.fill();
+
+            ctx.fillStyle = colors.sheep.hoof;
+            [x+15, x+35, x+55, x+75].forEach((legX, i) => {
+                const hoofY = (i < 2 ? backLegY : frontLegY) + 25;
+                ctx.beginPath();
+                ctx.roundRect(legX, hoofY + (i%2 ? legOffset : -legOffset), 15, 8, 4);
+                ctx.fill();
+            });
+        }
+
+        // 碰撞检测
+        function checkCollision(obs) {
+            return gameState.sheep.x + 50 > obs.x &&
+                   gameState.sheep.x < obs.x + 40 &&
+                   gameState.sheep.y + 50 > obs.y + 20;
+        }
+
+        // 游戏主循环
+        function gameLoop() {
+            if (!gameState.gameActive) return;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (gameState.isVictory) {
+                showVictory();
+                requestAnimationFrame(gameLoop);
+                return;
+            }
+
+            gameState.sheep.y += gameState.sheep.vy;
+            gameState.sheep.vy += config.gravity;
+            gameState.sheep.frame++;
+            
+            if (gameState.sheep.y > 300) {
+                gameState.sheep.y = 300;
+                gameState.sheep.vy = 0;
+                gameState.sheep.isJumping = false;
+            }
+
+            const now = Date.now();
+            if (now - gameState.lastObstacleTime > 1500 && Math.random() < 0.02) {
+                gameState.obstacles.push({
+                    x: canvas.width,
+                    y: 310,
+                    passed: false
+                });
+                gameState.lastObstacleTime = now;
+            }
+
+            gameState.obstacles.forEach((obs, index) => {
+                obs.x -= config.baseSpeed + Math.floor(gameState.score/20);
+                if (checkCollision(obs)) gameOver();
+                if (!obs.passed && obs.x + 40 < gameState.sheep.x) {
+                    gameState.score += 5;
+                    obs.passed = true;
+                }
+                if (obs.x < -40) gameState.obstacles.splice(index, 1);
+            });
+
+            drawBackground();
+            drawSheep(gameState.sheep.x, gameState.sheep.y);
+            gameState.obstacles.forEach(obs => {
+                ctx.fillStyle = '#6ab040';
+                ctx.beginPath();
+                ctx.arc(obs.x+20, obs.y+25, 20, 0, Math.PI);
+                ctx.fill();
+            });
+            
+            ctx.fillStyle = '#4b3621';
+            ctx.font = '24px Comic Sans MS';
+            ctx.fillText(`🍰 收集材料: ${gameState.score}/100`, 20, 40);
+
+            if (gameState.score >= 100) gameState.isVictory = true;
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        // 胜利画面（已修正）
+        function showVictory() {
+            if(hearts.length < 50) hearts.push(new Heart());
+            hearts.forEach(h => h.update());
+            
+            ctx.fillStyle = 'rgba(255, 240, 245, 0.95)';
+            ctx.fillRect(50, 50, 700, 300);
+            
+            hearts.forEach(h => h.draw());
+
+            ctx.fillStyle = '#ff6b6b';
+            ctx.font = 'bold 40px Comic Sans MS';
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 3;
+            ctx.strokeText('🎉 冒险成功！欢迎回家！', 180, 140);
+            ctx.fillText('🎉 冒险成功！欢迎回家！', 180, 140);
+            
+            // 修正后的文字内容
+            ctx.font = '30px Comic Sans MS';
+            ctx.strokeText('和小马一起庆祝吧～', 260, 200);
+            ctx.fillText('和小马一起庆祝吧～', 260, 200);
+
+            drawSheep(80, 220); // 已移除strokeRect轮廓
+        }
+
+        // 游戏结束
+        function gameOver() {
+            gameState.gameActive = false;
+            restartBtn.style.display = 'block';
+            ctx.fillStyle = 'rgba(0,0,0,0.7)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.font = '50px Comic Sans MS';
+            ctx.fillText('😢 撞到灌木丛了...', 200, 200);
+        }
+
+        // 重置游戏
+        function resetGame() {
+            hearts = [];
+            gameState = {
+                sheep: { x: 100, y: 300, vy: 0, isJumping: false, frame: 0 },
+                obstacles: [],
+                score: 0,
+                gameActive: true,
+                clouds: createClouds(3),
+                lastObstacleTime: 0,
+                isVictory: false
+            };
+            restartBtn.style.display = 'none';
+            gameLoop();
+        }
+
+        // 事件监听
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && !gameState.sheep.isJumping && gameState.gameActive) {
+                gameState.sheep.vy = config.jumpForce;
+                gameState.sheep.isJumping = true;
+            }
+        });
+
+        // 启动游戏
+        resetGame();
+    </script>
+</body>
+</html>
